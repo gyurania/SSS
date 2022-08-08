@@ -59,6 +59,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 // const OPENVIDU_SERVER_URL = "https://13.125.192.199:4443/";
 const OPENVIDU_SERVER_URL = "https://" + location.hostname + ":4443";
+// const OPENVIDU_SERVER_URL = "https://a606.shop:8443" ;
+
 const OPENVIDU_SERVER_SECRET = "MY_SECRET";
 
 export default {
@@ -152,7 +154,7 @@ export default {
 		},
 
 		leaveSession () {
-			// --- Leave the session by calling 'disconnect' method over the Session object ---
+
 			if (this.session) this.session.disconnect();
 
 			this.session = undefined;
@@ -169,23 +171,10 @@ export default {
 			this.mainStreamManager = stream;
 		},
 
-		/**
-		 * --------------------------
-		 * SERVER-SIDE RESPONSIBILITY
-		 * --------------------------
-		 * These methods retrieve the mandatory user token from OpenVidu Server.
-		 * This behavior MUST BE IN YOUR SERVER-SIDE IN PRODUCTION (by using
-		 * the API REST, openvidu-java-client or openvidu-node-client):
-		 *   1) Initialize a Session in OpenVidu Server	(POST /openvidu/api/sessions)
-		 *   2) Create a Connection in OpenVidu Server (POST /openvidu/api/sessions/<SESSION_ID>/connection)
-		 *   3) The Connection.token must be consumed in Session.connect() method
-		 */
-
 		getToken (mySessionId) {
 			return this.createSession(mySessionId).then(sessionId => this.createToken(sessionId));
 		},
 
-		// See https://docs.openvidu.io/en/stable/reference-docs/REST-API/#post-session
 		createSession (sessionId) {
 			return new Promise((resolve, reject) => {
 				axios
@@ -213,7 +202,6 @@ export default {
 			});
 		},
 
-		// See https://docs.openvidu.io/en/stable/reference-docs/REST-API/#post-connection
 		createToken (sessionId) {
 			return new Promise((resolve, reject) => {
 				axios
@@ -256,28 +244,6 @@ export default {
 			this.publisher.publishVideo(false)
 			this.closecamera = !this.closecamera
 		},
-
-		// sendMassage () {
-
-		// 	this.session.signal({
-		// 		data: this.chatText,  // Any string (optional)
-		// 		})
-		// 		.then(() => {
-		// 			console.log('Message successfully sent');
-		// 		})
-		// 		.catch(error => {
-		// 			console.error(error);
-		// 		});
-
-		// 	this.chat.push(this.chatText)
-		// 	this.chatText = null
-
-		// 	this.session.on('signal', (event) => {
-		// 		console.log(event.data); // Message
-		// 		console.log(event.from); // Connection object of the sender
-		// 		console.log(event.type); // The type of message
-		// 	});
-		// }
 	}
 }
 </script>
