@@ -190,6 +190,7 @@ export default {
 			'우영우'.split('').forEach(element => {
 					tempUserName += element.charCodeAt(0).toString(16)
         });
+				
       this.mySessionId = 'Session_' + tempSessionId
 
 			this.myUserName = tempUserName
