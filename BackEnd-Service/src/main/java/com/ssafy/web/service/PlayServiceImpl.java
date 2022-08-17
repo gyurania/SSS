@@ -1,13 +1,18 @@
 package com.ssafy.web.service;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.ssafy.web.common.PathUtil;
 import com.ssafy.web.db.entity.play.FeelingCard;
 import com.ssafy.web.db.entity.play.ObjectCard;
 import com.ssafy.web.db.entity.play.Play;
@@ -95,11 +100,24 @@ public class PlayServiceImpl implements PlayService {
 			ObjectCard card = objectCardRepository.findByCardId(arr[i]);
 			ObjectDto objectCard = new ObjectDto();
 
-			objectCard.setImage(card.getImage());
+//			objectCard.setImage(card.getImage());
 			objectCard.setName(card.getName());
 			objectCard.setQuestion(card.getQuestion());
 
+			String url = PathUtil.OBJECT_CARD_PATH+ card.getImage();
+			byte[] imageByteArray;
+			try {
+				InputStream imageIS = new FileInputStream(url);
+				imageByteArray = IOUtils.toByteArray(imageIS);
+				objectCard.setImage(imageByteArray);
+				imageIS.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			objectList.add(objectCard);
+			
 		}
 
 		return objectList;

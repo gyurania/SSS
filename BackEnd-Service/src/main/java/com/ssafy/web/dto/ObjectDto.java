@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class ObjectDto {
 
-	private String image;
-
+//	private String image;
+	private byte[] image;
 	private String name;
 
 	private String question;
