@@ -57,10 +57,11 @@
               >
                 <img
                   id="cardImg"
-                  :src='card[1]'
+                  :src="`data:image/png;base64,${card[1]}`"
                   alt="nothing"
                   class="img-fluid rounded shadow-lg"
                 />
+                  <!-- :src='card[1]' -->
               </div>
             </div>
           </div>
@@ -145,7 +146,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 1) {
+        if (this.gameCount === 5) {
           let totalTimeMilSec = this.timeSequence.reduce((a,b) => a + b, 0)
 
           let hour = parseInt(totalTimeMilSec / 3600000)
