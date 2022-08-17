@@ -7,7 +7,7 @@
       >
     </div>
     <!-- </a> -->
-    <modal :show.sync="modals.modal1">
+    <modal :show.sync="modals.modalFlag">
       <h6 slot="header" class="modal-title" id="modal-title-default">
         <h4 class="display-4">예약이 완료되었습니다.</h4>
       </h6>
@@ -18,9 +18,8 @@
           @click="modals.modalFlag = false"
           >닫기
         </base-button>
-        <router-link to="/childReserveShow"
-          ><base-button type="primary">상담일지 확인</base-button></router-link
-        >
+        <base-button type="primary" @click="moveHistory()">상담일지 확인</base-button>
+        
       </div>
     </modal>
   </div>
@@ -65,6 +64,12 @@ export default {
         .catch((err) => {
           console.log(err.response);
         });
+    },
+    moveHistory() {
+      this.$router.push({
+        name: "childReserveShow",
+        params: this.$route.params.childInfo,
+      });
     },
   },
 };

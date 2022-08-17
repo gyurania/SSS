@@ -57,7 +57,7 @@ export default {
   created() {
     console.log('특정아동 예약날짜')
     this.$axios({
-      url: `https://i7a606.q.ssafy.io/service-api/reserv-therapist/child/${this.$store.state.accounts.userid}/${this.$route.params.childId}`,
+      url: `https://i7a606.q.ssafy.io/service-api/reserv-therapist/child/${this.$store.state.accounts.userid}/${this.$store.state.accounts.childInfo.childId}`,
       method: 'get'
     })
       .then(res => {

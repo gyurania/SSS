@@ -50,11 +50,11 @@
                     @keyup.enter="login(credentials)"
                   />
                 </div>
-                <div class="text-right mt-3">
+                <!-- <div class="text-right mt-3">
                   <base-checkbox v-model="credentials.saveId">
                     아이디 저장
                   </base-checkbox>
-                </div>
+                </div> -->
                 <div class="text-center mt-3">
                   <router-link to="/signinSelect"
                     ><base-button type="primary" class="col-lg-3 m-4"
@@ -73,13 +73,13 @@
           </card>
 
           <!-- 추후 비밀번호 찾기 넣을때 쓸꺼 -->
-          <div class="row mt-3">
+          <!-- <div class="row mt-3">
             <div class="col-6">
               <a href="#" class="text-light">
                 <small>비밀번호찾기</small>
               </a>
             </div>
-          </div>
+          </div> -->
          
         </div>
       </div>

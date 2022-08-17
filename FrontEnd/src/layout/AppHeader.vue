@@ -31,12 +31,12 @@
             <i class="ni ni-collection d-lg-none"></i>
             <span class="nav-link-inner--text"><b>치료교육</b></span>
           </a>
-          <router-link to="/counselorRecommend" class="dropdown-item"
+          <!-- <router-link to="/counselorRecommend" class="dropdown-item"
             >상담신청</router-link
           >
           <router-link to="/childReserveShow" class="dropdown-item"
             >상담일지(확인)</router-link
-          >
+          > -->
           <router-link to="/playAlone" class="dropdown-item"
             >혼자놀기</router-link
           >

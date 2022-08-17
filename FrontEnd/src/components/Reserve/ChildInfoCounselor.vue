@@ -3,11 +3,11 @@
     <div class="row col-sm-12 mt-5">
       <div class="ChildInfo col-sm-5 row">
         <div class="col-sm-4 text-muted">이름</div>
-        <div class="col-sm-8 text-muted">{{ childInfo['childName'] }}</div>
+        <div class="col-sm-8 text-muted">{{ childInfo2['name'] }}</div>
       </div>
       <div class="ChildInfo col-sm-6 row">
         <div class="col-sm-4 text-muted">보호자이름</div>
-        <div class="col-sm-8 text-muted">{{ childInfo['parentName'] }}</div>
+        <div class="col-sm-8 text-muted">{{ childInfo2['parentName'] }}</div>
       </div>
     </div>
     <div class="row col-sm-12 mt-2 ">
@@ -29,7 +29,7 @@
     <div class="col-sm-12 text-right col">
       <base-button type="primary" class="col-sm-2" @click="moveSurveyResult">문진표</base-button>
       <router-link to="/webCounselor" :ids="{
-        child_id: childInfo['childId'],
+        child_id: childInfo2['childId'],
         parent_id: childInfo2['parentId'],
         thera_id: this.$store.state.accounts.userid
         }" class="col-sm-2">
@@ -45,30 +45,29 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      childInfo: this.$route.params,
-      childInfo2: {},
+      childInfo2: this.$store.state.accounts.childInfo,
       theraInfo: {}
     };
   },
   methods: {
     moveSurveyResult() {
-    //   if (this.childInfo["surveyFlag"]) {
-    //     this.$router.push({ name: "surveyresult", params: this.childInfo });
-    //   } else {
-    //     alert("문진표가 작성되어 있지 않습니다.")
-    //   }
+      if (this.childInfo2["surveyFlag"]) {
+        this.$router.push({ name: "surveyresult", params: this.childInfo2 });
+      } else {
+        alert("문진표가 작성되어 있지 않습니다.")
+      }
     },
   },
   created() {
     console.log("아동정보쪽")
-    console.log(this.$route.params)
     axios({
       url: `https://i7a606.q.ssafy.io/service-api/child/reserv-therapist/${this.$route.params.childId}`,
       method: 'get'
     })
       .then(res => {
+        console.log('ghkd')
         console.log(res.data)
-        this.childInfo2 = res.data
+        this.$store.state.accounts.childInfo = res.data
       })
       .catch(err => {
         console.log(err.response)

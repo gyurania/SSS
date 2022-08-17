@@ -253,6 +253,7 @@ export default {
         name: "counselorRecommend",
         params: this.children[index],
       });
+      this.$store.state.accounts.childInfo = this.children[index]
     },
     moveSurveyResult(index) {
       this.$router.push({ name: "surveyresult", params: this.children[index] });
@@ -262,6 +263,7 @@ export default {
         name: "childReserveShow",
         params: this.children[index],
       });
+      this.$store.state.accounts.childInfo = this.children[index]
     },
   },
   created() {
