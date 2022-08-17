@@ -65,7 +65,7 @@
                 >
                   <img
                     id="cardImg"
-                    :src="card[1]"
+                    :src="`data:image/png;base64,${card[1]}`"
                     alt="Raised image"
                     class="img-fluid rounded shadow-lg"
                   />
@@ -152,7 +152,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 3) {
+        if (this.gameCount === 5) {
           //this.$store.state.cardGame.playingNow = false
           console.log(this.successCount);
           axios.post("https://i7a606.q.ssafy.io/service-api/play/result", {
