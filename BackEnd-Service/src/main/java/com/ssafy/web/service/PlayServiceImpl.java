@@ -105,7 +105,6 @@ public class PlayServiceImpl implements PlayService {
 			objectCard.setQuestion(card.getQuestion());
 
 			String url = PathUtil.OBJECT_CARD_PATH + card.getImage();
-			System.out.println(card.getImage());
 			byte[] imageByteArray;
 			try {
 				InputStream imageIS = new FileInputStream(url);
@@ -113,7 +112,7 @@ public class PlayServiceImpl implements PlayService {
 				objectCard.setImage(imageByteArray);
 				imageIS.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				objectCard.setSss("asdasd");
 				e.printStackTrace();
 			}
 

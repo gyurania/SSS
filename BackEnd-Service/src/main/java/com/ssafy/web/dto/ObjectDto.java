@@ -10,5 +10,6 @@ public class ObjectDto {
 	private String name;
 
 	private String question;
+	private String sss;
 
 }
