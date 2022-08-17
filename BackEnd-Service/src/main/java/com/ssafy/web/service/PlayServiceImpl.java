@@ -112,12 +112,9 @@ public class PlayServiceImpl implements PlayService {
 				objectCard.setImage(imageByteArray);
 				imageIS.close();
 			} catch (IOException e) {
-				objectCard.setSss("asdasd");
 				e.printStackTrace();
 			}
-
 			objectList.add(objectCard);
-
 		}
 
 		return objectList;

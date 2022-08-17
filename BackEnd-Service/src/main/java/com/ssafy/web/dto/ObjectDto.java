@@ -7,9 +7,9 @@ public class ObjectDto {
 
 //	private String image;
 	private byte[] image;
+
 	private String name;
 
 	private String question;
-	private String sss;
 
 }
