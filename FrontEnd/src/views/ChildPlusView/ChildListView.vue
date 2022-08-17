@@ -30,25 +30,34 @@
             </div>
             <!--위 타이틀 완료-->
 
-            <div class="children col">
+            <div class="children row">
               <div
                 v-for="(child, i) in children"
                 :key="i"
-                class="col-sm-4 mb-5"
+                class="col-sm-4 mb-5 oneChild"
               >
                 <div class="child py-3">
                   <h4 class="col col-sm-12">
-                    <img :src="`data:image/png;base64,${child['profileUrl']}`" style="width: 150px; height: 150px">
-                    <p>이름: <nbsp></nbsp>{{ child["name"] }}</p>
-                    <p>생년월일: {{ child["birth"].slice(0, 10) }}</p>
-                    <p>성별: {{ child["gender"] }}</p>
+                    <div class="p_img text-center">
+                      <img
+                        :src="`data:image/png;base64,${child['profileUrl']}`"
+                        style="width: 150px; height: 150px"
+                        class="text-right"
+                      />
+                    </div>
+                    <div class="child_p px-md-3 pt-md-2">
+                      <p>이름: {{ child["name"] }}</p>
+                      <p>생년월일: {{ child["birth"].slice(0, 10) }}</p>
+                      <p>성별: {{ child["gender"] }}</p>
+                    </div>
                   </h4>
                   <div
-                    class="row text-center justify-content-center col-sm-12 mx-0"
+                    class="row text-center justify-content-between col-sm-12 mx-0"
                   >
                     <div class="col-sm-6 px-0" v-if="child['surveyFlag']">
                       <base-button
-                        type="default"
+                        outline
+                        type="secondary"
                         class="childbutton"
                         @click="moveSurveyResult(i)"
                       >
@@ -57,7 +66,8 @@
                     </div>
                     <div class="col-sm-6 px-0" v-else>
                       <base-button
-                        type="default"
+                        outline
+                        type="secondary"
                         class="childbutton"
                         @click="moveSurvey(i)"
                       >
@@ -66,7 +76,8 @@
                     </div>
                     <div class="col-sm-6 px-0" v-if="child['surveyFlag']">
                       <base-button
-                        type="default"
+                        outline
+                        type="secondary"
                         class="childbutton"
                         @click="moveCounselorRecom(i)"
                       >
@@ -78,13 +89,21 @@
                     </div>
 
                     <!-- <router-link to="/childReserveShow" class="col-lg-6 px-0"> -->
-                    <base-button type="default" class="childbutton" @click="moveHistory(i)">
-                      상담일정
-                    </base-button>
+
+                    <div class="col-sm-6 px-0">
+                      <base-button
+                        outline
+                        type="secondary"
+                        class="childbutton"
+                        @click="moveHistory(i)"
+                      >
+                        상담일정
+                      </base-button>
+                    </div>
                     <!-- </router-link> -->
 
                     <router-link to="/survey" class="col-sm-6 px-0">
-                      <base-button type="default" class="childbutton">
+                      <base-button outline type="secondary" class="childbutton">
                         놀이 기록
                       </base-button>
                     </router-link>
@@ -178,21 +197,24 @@ export default {
   methods: {
     addChild() {
       console.log("아동추가");
-      var frm = new FormData()
-      var photoFile = document.getElementById("photo")
-      console.log(photoFile)
+      var frm = new FormData();
+      var photoFile = document.getElementById("photo");
+      console.log(photoFile);
       const childInfo = JSON.stringify({
         parent_id: this.$store.state.accounts.userid,
         name: this.name,
         birth: this.birth,
         gender: this.gender,
-        profile_url: '',
+        profile_url: "",
         survey_flag: 0,
-      })
+      });
       // console.log(childInfo)
       // console.log(photoFile.files[0])
-      frm.append('childInfo', new Blob([childInfo], { type: "application/json" }));
-      frm.append('profile', photoFile.files[0]);
+      frm.append(
+        "childInfo",
+        new Blob([childInfo], { type: "application/json" })
+      );
+      frm.append("profile", photoFile.files[0]);
       if (
         this.name.length == 0 ||
         this.birth.length == 0 ||
@@ -206,8 +228,8 @@ export default {
           method: "post",
           data: frm,
           headers: {
-            'Content-Type': 'multipart/form-data'
-          }
+            "Content-Type": "multipart/form-data",
+          },
         })
           .then((res) => {
             console.log(res.data);
@@ -236,8 +258,11 @@ export default {
       this.$router.push({ name: "surveyresult", params: this.children[index] });
     },
     moveHistory(index) {
-      this.$router.push({ name: "childReserveShow", params: this.children[index] });
-    }
+      this.$router.push({
+        name: "childReserveShow",
+        params: this.children[index],
+      });
+    },
   },
   created() {
     console.log(`userid: ${this.$store.state.accounts.userid}`);
@@ -255,18 +280,23 @@ export default {
         console.log(err.response);
       });
 
-    axios({  // accessToken 재발급
-      url: `https://i7a606.q.ssafy.io/service-api/auth/refresh/${this.$store.state.accounts.userid}`,
-      method: 'get',
-      headers: { Authorization: `Bearer ${this.$store.state.accounts.refreshToken}`}
+    axios({
+      // accessToken 재발급
+      url: `https://i7a606.q.ssafy.io/service-api/auth/refresh/${
+        this.$store.state.accounts.userid
+      }`,
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${this.$store.state.accounts.refreshToken}`,
+      },
     })
-      .then(res => {
-        console.log(res.data)
-        this.$store.state.accounts.accessToken = res.data.accessToken
+      .then((res) => {
+        console.log(res.data);
+        this.$store.state.accounts.accessToken = res.data.accessToken;
       })
-      .catch(err => {
-        console.log(err.response)
-      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   },
 };
 </script>
@@ -280,14 +310,15 @@ export default {
 .card {
   position: relative;
 }
+/* 자녀관리카드 */
 .child {
-  border: 1px solid #dcdcdc;
-  border-radius: 15px;
+  border-radius: 50px;
+  border: 5px solid #fff7ea;
 }
-.childbutton {
-  margin: 20px 10px 20px 10px;
+/* hover두면 앞으로 나오는효과 */
+.child:hover {
+  background-color: #fffeec;
 }
-
 .childcard {
   width: 25;
   border-radius: 15px;
@@ -298,15 +329,41 @@ export default {
   border: none;
   cursor: pointer;
 }
+.child_p > p {
+  margin: 0;
+}
+/* 자녀관리 하단의 문진표보기 등 버튼 */
+.childbutton {
+  margin: 10px;
+  width: 80%;
+  border: 1px solid rgb(237, 237, 237);
+}
+/* 버튼 관련~~~~ */
+
 button:focus,
 button:active {
   outline: none;
   box-shadow: none;
 }
+.childbutton:hover {
+  background-color: #ffdcb8;
+  border: 1px solid #dcdcdc;
+}
+/* 버튼 관련~~~~ */
+
 .fa-user-plus {
   color: #8898aa;
 }
 .fa-user-plus:hover {
   color: #ffdcb8;
+}
+/* 사진 동그랗게 만들기 */
+.p_img > img {
+  border-radius: 100px;
+  border: 5px solid #fff7ea;
+}
+.p_img > img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 </style>

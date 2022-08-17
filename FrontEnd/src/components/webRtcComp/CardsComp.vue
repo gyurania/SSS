@@ -224,7 +224,8 @@ export default {
 .card_name {
   width: 100vw;
   height: 100vh;
-  margin: 20px 0;
+  padding-top: 200px;
+  top: 200px;
   font-size: 7rem;
   color: rgb(0, 0, 0);
 }
