@@ -212,7 +212,7 @@ export default {
 
       checkid: false,
 
-      checkEmail: true,
+      checkEmail: false,
       emailCode1: '',
       emailCode2: ''
     };
