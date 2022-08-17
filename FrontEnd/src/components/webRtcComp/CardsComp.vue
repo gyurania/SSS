@@ -20,7 +20,7 @@
             <!--카드 이름 나오는 곳 (1단계)-->
             <div class="cardshow">
               <div v-if="dialog0" class="text-center card_name">
-                <b>{{ this.solution }}</b>
+                <b>{{ this.solution_text }}</b>
               </div>
             </div>
             <!--카드 이름 나오는 곳 (1단계)-->
@@ -121,6 +121,7 @@ export default {
       this.$store.commit("sampleCards");
       setTimeout(() => {
         this.solution = this.$store.state.cardGame.solutionCard[0];
+        this.solution_text = this.$store.state.cardGame.solutionCard[2]
         console.log(`solution : ${this.solution}`);
         this.selectedCards = this.$store.state.cardGame.selectedCards;
         this.dialog0 = true;
