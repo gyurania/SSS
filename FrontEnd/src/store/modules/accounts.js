@@ -72,7 +72,7 @@ export default {
           dispatch("saveAccessToken", accessToken);
           dispatch("saveRefreshToken", refreshToken);
           dispatch("saveUserid", userid);
-          // dispatch("fetchCurrentUser", userid);
+          dispatch("fetchCurrentUser", userid);
           router.push({ name: "components" });
         })
         .catch((err) => {
