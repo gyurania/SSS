@@ -29,9 +29,9 @@
     <div class="col-sm-12 text-right col">
       <base-button type="primary" class="col-sm-2" @click="moveSurveyResult">문진표</base-button>
       <router-link to="/webCounselor" :ids="{
-        child_id: childInfo2['childId'],
-        parent_id: childInfo2['parentId'],
-        thera_id: this.$store.state.accounts.userid
+          child_id: childInfo2['childId'],
+          parent_id: childInfo2['parentId'],
+          thera_id: this.$store.state.accounts.userid
         }" class="col-sm-2">
         <base-button type="primary">상담방</base-button>
       </router-link>
@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       childInfo2: this.$store.state.accounts.childInfo,
-      theraInfo: {}
+      theraInfo: {},
     };
   },
   methods: {
@@ -65,9 +65,14 @@ export default {
       method: 'get'
     })
       .then(res => {
-        console.log('ghkd')
         console.log(res.data)
         this.$store.state.accounts.childInfo = res.data
+        this.$store.state.accounts.parentInfo = {
+          parentId: res.data.parentId,
+          parentPhone: res.data.parentPhone,
+          parentName: res.data.parentName,
+          profileUrl: res.data.profileUrl,
+        }
       })
       .catch(err => {
         console.log(err.response)
