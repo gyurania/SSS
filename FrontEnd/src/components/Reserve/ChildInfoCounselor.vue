@@ -28,13 +28,13 @@
     </div>
     <div class="col-sm-12 text-right col">
       <base-button type="primary" class="col-sm-2" @click="moveSurveyResult">문진표</base-button>
-      <router-link to="/webCounselor" :ids="{
+      <!-- <router-link to="/webCounselor" :ids="{
           child_id: childInfo2['childId'],
           parent_id: childInfo2['parentId'],
           thera_id: this.$store.state.accounts.userid
         }" class="col-sm-2">
         <base-button type="primary">상담방</base-button>
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
