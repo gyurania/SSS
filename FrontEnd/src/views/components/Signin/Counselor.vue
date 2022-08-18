@@ -1,78 +1,76 @@
 <template>
-  <div>
+  <div class="col-lg-12">
     <!--상담사 폼 학력 start-->
     <!-- 상담사 전문 분야 -->
     <hr />
-    <div class="col-lg-12 row m-0">
-      <label for="expertise_no" class="col col-lg-2 pr-1 mt-2">전문 분야</label>
-
-      <input
-        type="checkbox"
-        id="자폐증"
-        :value=1
-        v-model="datas.expertise_no"
-        @change="counselor"
-      />
-      <label for="자폐증">자폐증</label>
-      <label for="file" class="col col-lg-2 mt-3 "></label>
-      <input
-        type="checkbox"
-        id="아스퍼거"
-        :value=2
-        v-model="datas.expertise_no"
-        @change="counselor"
-      />
-      <label for="아스퍼거 증후군">아스퍼거 증후군</label>
-      <label for="file" class="col col-lg-2 mt-3 "></label>
-      <input
-        type="checkbox"
-        id="전반적 발달 장애"
-        :value=3
-        v-model="datas.expertise_no"
-        @change="counselor"
-      />
-      <label for="전반적 발달 장애">전반적 발달 장애</label>
-      <label for="file" class="col col-lg-2 mt-3 "></label>
-      <input
-        type="checkbox"
-        id="레트 증후군"
-        :value=4
-        v-model="datas.expertise_no"
-        @change="counselor"
-      />
-      <label for="레트 증후군">레트 증후군</label>
-      <label for="file" class="col col-lg-2 mt-3 "></label>
-      <input
-        type="checkbox"
-        id="아동기 붕괴성 장애"
-        :value=5
-        v-model="datas.expertise_no"
-        @change="counselor"
-      />
-      <label for="아동기 붕괴성 장애">아동기 붕괴성 장애</label>
+    <div class="row">
+      <label for="expertise_no" class=" col-lg-4 mt-2">전문 분야</label>
+      <div class="exper_name col-lg-8 row">
+        <label for="자폐증" class="col-4">
+          <input
+            type="checkbox"
+            id="자폐증"
+            :value="1"
+            v-model="datas.expertise_no"
+            @change="counselor"
+          />
+          자폐증</label
+        >
+        <label for="아스퍼거 증후군" class="col-4">
+          <input
+            type="checkbox"
+            id="아스퍼거"
+            :value="2"
+            v-model="datas.expertise_no"
+            @change="counselor"
+          />아스퍼거 증후군</label
+        >
+        <label for="전반적 발달 장애" class="col-4">
+          <input
+            type="checkbox"
+            id="전반적 발달 장애"
+            :value="3"
+            v-model="datas.expertise_no"
+            @change="counselor"
+          />전반적 발달 장애</label
+        >
+        <label for="레트 증후군" class="col-4">
+          <input
+            type="checkbox"
+            id="레트 증후군"
+            :value="4"
+            v-model="datas.expertise_no"
+            @change="counselor"
+          />레트 증후군</label
+        >
+        <label for="아동기 붕괴성 장애" class="col-5">
+          <input
+            type="checkbox"
+            id="아동기 붕괴성 장애"
+            :value="5"
+            v-model="datas.expertise_no"
+            @change="counselor"
+          />아동기 붕괴성 장애</label
+        >
+      </div>
     </div>
     <!--상담사 폼 프로필사진 start-->
     <hr />
-    <div class="col-lg-12 row m-0">
-      <label for="profile_photo" class="col col-lg-2 pr-1 mt-2"
-        >프로필사진</label
-      >
+    <div class="row">
+      <label for="profile_photo" class="col col-lg-4 mt-2">프로필사진</label>
       <!-- <img v-if="URL.createObjectURL(img_src)" :src="img_src" width="128" height="128"> -->
-      <label for="file" class="col col-lg-2 mt-3 "></label>
-      <form>
-        <input
-          type="file"
-          class="col-lg-8 form-control mt-2 form-control p-2"
-          id="photo"
-          name="photo"
-          placeholder="프로필사진"
-          @change="addProfilePicture"
-        />
-      </form>
+      <input
+        type="file"
+        class="col-lg-8 form-control mt-2 form-control p-2"
+        id="photo"
+        name="photo"
+        placeholder="프로필사진"
+        @change="addProfilePicture"
+      />
     </div>
     <!--상담사 폼 학력 start-->
     <hr />
-    <div class="col-lg-12 row m-0">
+    <div class="row">
       <label for="grade" class="col col-lg-2 mt-2">학력</label>
 
       <base-button
@@ -80,8 +78,8 @@
         class="ni ni-fat-add p-1"
         @click="학력추가 = true"
       ></base-button>
-      <div class="col-lg-12 row teach py-3 m-0" v-if="학력추가 == true">
-        <label for="school" class="col col-lg-2 mt-2">학교명</label>
+      <div class="col-lg-12 row teach py-3 m-1" v-if="학력추가 == true">
+        <label for="school" class="col col-lg-2 mt-2 school">학교명</label>
         <input
           type="text"
           class="col-lg-3 form-control"
@@ -113,19 +111,20 @@
           id="year"
           v-model="graduation"
         />
-
-        <p>
-          <button @click="addAcademicCareer">완료</button>
-        </p>
-        <p>
-          <button @click="학력추가 = false">취소</button>
-        </p>
+        <div class="conf row justify-content-end col-lg-12 mt-2">
+          <base-button @click="addAcademicCareer" class="col-2"
+            >완료</base-button
+          >
+          <base-button class="col-2" @click="학력추가 = false"
+            >취소</base-button
+          >
+        </div>
       </div>
     </div>
     <hr />
 
     <div v-for="(academicCareer, i) in datas.academicCareers" :key="i">
-      <div class="col-lg-12 row teach py-3 m-0">
+      <div class="col-lg-12 row teach py-3 m-1">
         <label for="school" class="col col-lg-2 mt-2"
           >학교명: {{ academicCareer["name"] }}</label
         >
@@ -149,7 +148,7 @@
     <!--상담사 폼 학력 end-->
 
     <!--상담사 폼 경력 start-->
-    <div class="col-lg-12 row m-0">
+    <div class="row">
       <label for="grade" class="col col-lg-2 mt-2">경력</label>
       <base-button
         type="secondary"
@@ -157,7 +156,7 @@
         @click="경력추가 = true"
       ></base-button>
 
-      <div class="col-lg-12 row teach py-3 m-0" v-if="경력추가 == true">
+      <div class="col-lg-12 row teach py-3 m-1" v-if="경력추가 == true">
         <label for="job" class="col col-lg-2 mt-2">회사명</label>
         <input
           type="text"
@@ -205,19 +204,19 @@
           placeholder="담당업무"
           v-model="part"
         />
-        <p>
-          <button @click="addCareer">완료</button>
-        </p>
-        <p>
-          <button @click="경력추가 = false">취소</button>
-        </p>
+
+        <div class="conf row justify-content-end col-lg-12 mt-2">
+          <base-button @click="addCareer" class="col-2">완료</base-button>
+          <base-button class="col-2" @click="경력추가 = false"
+            >취소</base-button
+          >
+        </div>
       </div>
-      <hr />
     </div>
     <hr />
 
     <div v-for="(career, idx) in datas.careers" :key="idx">
-      <div class="col-lg-12 row teach py-3 m-0">
+      <div class="col-lg-12 row teach py-3 m-1">
         <label for="school" class="col col-lg-2 mt-2"
           >회사명: {{ career["name"] }}</label
         >
@@ -241,7 +240,8 @@
     <!--상담사 폼 경력 end-->
 
     <!--상담사 폼 자격증 start-->
-    <div class="col-lg-12 row m-0">
+
+    <div class="row ">
       <label for="certificate" class="col col-lg-2 pr-1 mt-2">자격증</label>
       <base-button
         type="secondary"
@@ -249,7 +249,7 @@
         @click="자격증추가 = true"
       ></base-button>
 
-      <div class="col-lg-12 row teach py-3 m-0" v-if="자격증추가 == true">
+      <div class="col-lg-12 row teach py-3 m-1" v-if="자격증추가 == true">
         <label for="certificate_name" class="col col-lg-2 mt-2">자격증명</label>
         <input
           type="text"
@@ -285,19 +285,19 @@
           placeholder="자격증파일"
           @change="addLicenceFile"
         />
-        <p>
-          <button @click="addLicence">완료</button>
-        </p>
-        <p>
-          <button @click="자격증추가 = false">취소</button>
-        </p>
+
+        <div class="conf row justify-content-end col-lg-12 mt-2">
+          <base-button @click="addLicence" class="col-2">완료</base-button>
+          <base-button class="col-2" @click="자격증추가 = false"
+            >취소</base-button
+          >
+        </div>
       </div>
-      <hr />
     </div>
     <hr />
 
     <div v-for="(licence, i) in datas.licences" :key="i">
-      <div class="col-lg-12 row teach py-3 m-0">
+      <div class="col-lg-12 row teach py-3 m-1">
         <label for="school" class="col col-lg-2 mt-2"
           >자격증명: {{ licence["name"] }}</label
         >
@@ -316,7 +316,6 @@
           <button @click="deleteLicence(i)">삭제</button>
         </p>
       </div>
-      <hr />
     </div>
     <!--상담사 폼 자격증 end-->
   </div>
@@ -351,7 +350,7 @@ export default {
       },
       file_name: "파일을 선택하세요.",
       file: "",
-      img_src: '',
+      img_src: "",
 
       학력추가: false,
       경력추가: false,
@@ -376,64 +375,68 @@ export default {
   methods: {
     addProfilePicture(e) {
       var photoFile = document.getElementById("photo");
-      this.datas.profile_url = photoFile
-      this.counselor()
+      this.datas.profile_url = photoFile;
+      this.counselor();
     },
     addLicenceFile(e) {
       let file = e.target.files[0];
       let name = file.name;
       this.licence_file_name = file.name;
       this.file = file;
-      if(name.endsWith('.pdf') || name.endsWith('.docx') || 
-        name.endsWith('.hwp') || name.endsWith('.md') || name.endsWith('.ppt'))
+      if (
+        name.endsWith(".pdf") ||
+        name.endsWith(".docx") ||
+        name.endsWith(".hwp") ||
+        name.endsWith(".md") ||
+        name.endsWith(".ppt")
+      )
         this.licence_file_url = URL.createObjectURL(file);
-      else
-        alert("pdf, docx, hwp의 파일로 올려주세요.")
-        this.licence_file_url = ""
+      else alert("pdf, docx, hwp의 파일로 올려주세요.");
+      this.licence_file_url = "";
     },
     addAcademicCareer() {
       if (this.university && this.major && this.admission && this.graduation) {
         this.datas.academicCareers.push({
-          "name": this.university,
-          "major": this.major,
-          "admin": this.admission,
-          "gradu": this.graduation
+          name: this.university,
+          major: this.major,
+          admin: this.admission,
+          gradu: this.graduation,
         });
-        this.counselor()
-        this.university = ""
-        this.major = ""
-        this.admission = ""
-        this.graduation = ""
+        this.counselor();
+        this.university = "";
+        this.major = "";
+        this.admission = "";
+        this.graduation = "";
         this.학력추가 = false;
-    } else {
+      } else {
         alert("모두 정확하게 입력하시오.");
       }
     },
     deleteAcademicCareer(index) {
-      this.datas.academicCareers.splice(index, 1)
-      this.counselor()
+      this.datas.academicCareers.splice(index, 1);
+      this.counselor();
     },
     addCareer() {
       if (this.company && this.position && this.dates && this.part) {
         this.datas.careers.push({
-          "name": this.company,
-          "level": this.position,
-          "date": this.dates.range,
-          "role": this.part,
-      });
-        this.counselor()
-        this.company = ""
-        this.position = ""
-        this.dates = ""
-        this.part = ""
+          name: this.company,
+          level: this.position,
+          date: this.dates.range,
+          role: this.part,
+        });
+        this.counselor();
+        this.company = "";
+        this.position = "";
+        this.dates = "";
+        this.part = "";
         this.경력추가 = false;
       } else {
         alert("모두 정확하게 입력하시오.");
       }
     },
     deleteCareer(index) {
-      this.datas.careers.splice(index, 1)
-      this.counselor()
+      this.datas.careers.splice(index, 1);
+      this.counselor();
     },
     addLicence() {
       if (
@@ -443,24 +446,24 @@ export default {
         this.licence_file_name
       ) {
         this.datas.licences.push({
-          "name": this.licence_name,
-          "place": this.licence_publication,
-          "date": this.acquisition_date,
-          "file": this.licence_file_name,
+          name: this.licence_name,
+          place: this.licence_publication,
+          date: this.acquisition_date,
+          file: this.licence_file_name,
         });
-        this.counselor()
-        this.licence_name = "",
-        this.licence_publication = "",
-        this.acquisition_date = "",
-        this.licence_file_name = "",
-        this.자격증추가 = false;
+        this.counselor();
+        (this.licence_name = ""),
+          (this.licence_publication = ""),
+          (this.acquisition_date = ""),
+          (this.licence_file_name = ""),
+          (this.자격증추가 = false);
       } else {
         alert("모두 정확하게 입력하시오.");
       }
     },
     deleteLicence(index) {
-      this.datas.licences.splice(index, 1)
-      this.counselor()
+      this.datas.licences.splice(index, 1);
+      this.counselor();
     },
     counselor() {
       this.$emit("counselor", this.datas);
@@ -481,15 +484,23 @@ input {
   cursor: text;
 }
 button {
-  height: 30px;
-  border-radius: 10px;
+  border-radius: 50px;
 }
 .teach {
   border-radius: 10px;
-  background-color: #ffdcbb;
+  border: 2px solid #ffdcbb;
+}
+/* 전문분야 checkbox 부분 */
+.exper_name {
+  top: -15px;
+  position: relative;
 }
 input[type="file"] {
   line-height: 1em;
+}
+input[type="checkbox"] {
+  top: 13.5px;
+  position: relative;
 }
 .input-group-text {
   border-radius: 15px 0 0 15px;
