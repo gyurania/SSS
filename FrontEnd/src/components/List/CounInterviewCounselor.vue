@@ -47,7 +47,7 @@ export default {
           soratable: true,
         },
         {
-          key: "content",
+          key: "record",
           label: "상담일지",
           soratable: false,
         },
@@ -76,7 +76,6 @@ export default {
               const time = this.items[i]["startedTime"].slice(11, 16)
               this.items[i]["date"] = date
               this.items[i]["time"] = time
-              this.items[i]["content"] = this.items[i]["memo"]
             }
             console.log(this.items)
           })
@@ -108,7 +107,7 @@ export default {
   methods: {
     counReview(item) {
       // console.log(item["memo"])
-      this.$router.push({ name: "counReview", params: { memo: item["memo"], consultNo: item["consultNo"]} });
+      this.$router.push({ name: "counReview", params: { memo: item["memo"], consultNo: item["consultNo"]}, record: item["record"] });
     },
     // async getItems(item) {
     //   console.log(this.currentPage)
