@@ -213,4 +213,11 @@ public class ChildServiceImpl implements ChildService {
 		return childInfo;
 	}
 
+	// 아동 survey 값 
+	@Override
+	public int isSurvey(String child_id) {
+		Child child = childRepository.findByChildId(child_id);
+		return child.getSurveyFlag();
+	}
+
 }
