@@ -85,7 +85,7 @@
             ><b>상담사보기</b></router-link
           >
         </li>
-        <li class="nav-link" v-if="isLoggedIn && this.$store.state.accounts.userid.slice(0, 1) === 'p'">
+        <li class="nav-link" v-if="isLoggedIn">
           <router-link
             to="/profile"
             class="nav-link-inner--text navbar p-0"
