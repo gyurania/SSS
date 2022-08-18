@@ -18,11 +18,13 @@
         <div class="container">
           <card shadow class="py-5 px-md-5 card-profile mt--300" no-body>
             <!--카드 이름 나오는 곳 (1단계)-->
-            <div class="cardshow">
+            <!-- <div class="cardshow">
               <div v-if="dialog0" class="text-center card_name">
-                <b>{{ this.solution_text }}</b>
+
+                <b>{{ this.solutionText }}</b>
+
               </div>
-            </div>
+            </div> -->
             <!--카드 이름 나오는 곳 (1단계)-->
             <div
               class="justify-content-center align-items-center my-5 py-5"
@@ -103,6 +105,9 @@
                   />
                 </div>
               </div>
+              <div id="solutionTextDiv">
+                <h1>{{solutionText}}</h1>  
+              </div>
             </div>
             <!--카드 이미지 -->
           </card>
@@ -124,8 +129,9 @@ export default {
       loading: [false, false, false],
       selection: 1,
       solution: [],
+      solutionText: null,
       dialog1: false,
-      dialog0: false,
+      // dialog0: false,
 
       gameCountPerGame: 0,
       gameCount: 0,
@@ -158,16 +164,21 @@ export default {
     },
 
     createCards() {
+      if (this.gameCount == 0) {
+        this.timeSequence = [];
+      }
       this.gameSet = true;
 
       console.log(`올바른 카드를 고르세요`);
       this.$store.commit("sampleCards");
       setTimeout(() => {
         this.solution = this.$store.state.cardGame.solutionCard[0];
-        this.solution_text = this.$store.state.cardGame.solutionCard[2]
+
+        this.solutionText = this.$store.state.cardGame.solutionCard[2];
+
         console.log(`solution : ${this.solution}`);
         this.selectedCards = this.$store.state.cardGame.selectedCards;
-        this.dialog0 = true;
+        // this.dialog0 = true;
       }, 1000);
 
       this.timeStart = this.getTimeNow();
@@ -196,7 +207,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 5) {
+        if (this.gameCount === 2) {
           let totalTimeMilSec = this.timeSequence.reduce((a, b) => a + b, 0);
 
           let hour = parseInt(totalTimeMilSec / 3600000);
@@ -272,11 +283,11 @@ export default {
     },
   },
   watch: {
-    dialog0(val) {
-      if (!val) return;
+    // dialog0(val) {
+    //   if (!val) return;
 
-      setTimeout(() => (this.dialog0 = false), 1000);
-    },
+    //   setTimeout(() => (this.dialog0 = false), 1000);
+    // },
 
     dialog1(val) {
       if (!val) return;
@@ -360,5 +371,11 @@ export default {
 /* 뒷배경인데 건들지 마셈 */
 .section-profile-cover {
   height: 250px;
+}
+
+#solutionTextDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
 }
 </style>

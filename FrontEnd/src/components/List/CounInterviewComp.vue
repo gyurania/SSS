@@ -47,6 +47,11 @@ export default {
           soratable: true,
         },
         {
+          key: "theraName",
+          label: "상담사",
+          soratable: true,
+        },
+        {
           key: "record",
           label: "상담일지",
           soratable: false,
@@ -113,8 +118,8 @@ export default {
   // },
   methods: {
     counReview(item) {
-      // console.log(item["memo"], item["consultNo"])
-      this.$router.push({ name: "counReview", params: { memo: item["memo"], consultNo: item["consultNo"]} });
+      console.log(item["memo"], item["consultNo"])
+      this.$router.push({ name: "ConsultReview", params: { record: item["record"], theraName: item["theraName"]} });
     },
   //   getItems(item) {
   //     console.log(this.currentPage)
