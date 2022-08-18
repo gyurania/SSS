@@ -264,6 +264,7 @@ export default {
       this.$store.state.accounts.childInfo = this.children[index]
     },
     moveSurveyResult(index) {
+      this.$store.state.accounts.childInfo = this.children[index]
       this.$router.push({ name: "surveyresult", params: this.children[index] });
     },
     moveHistory(index) {

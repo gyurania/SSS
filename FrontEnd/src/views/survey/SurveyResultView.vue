@@ -40,7 +40,7 @@ export default {
   name: "SurveyResultView",
   data() {
     return {
-      child_id: this.$route.params.childId,
+      child_id: this.$store.state.accounts.childInfo.childId,
       name: '',
       answers: []
     }
