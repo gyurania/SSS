@@ -87,12 +87,14 @@ public class PlayServiceImpl implements PlayService {
 	public List<ObjectDto> objectCardPlay() {
 //		int totalCard = objectCardRepository.findAll().size();
 		//레디스에 카드 넣기
-		if(redisService.getCards(1) == null) {
-			redisService.setCards();
-		}
+//		redisService.setCards();
+		//		if(redisService.getCards(1) == null) {
+//			redisService.setCards();
+//		}
+		for(int i=1; i<=21; i++)
+			System.out.println(redisService.getCards(i));
 //		List<String> cards = redisService.getCards();
 ////		System.out.println(cards.get(0));
-		
 		int totalCard = objectCardRepository.countAll();
 		int arr[] = new int[3]; // 카드 아이디 3개 저장
 
@@ -113,6 +115,7 @@ public class PlayServiceImpl implements PlayService {
 //			ObjectCard card = objectCardRepository.findByCardId(arr[i]);
 			ObjectDto objectCard = new ObjectDto();
 			String selectCard = redisService.getCards(arr[i]); 
+			System.out.println(selectCard);
 			//apple.jpg,사과,사과를 골라주세요!
 			StringTokenizer st = new StringTokenizer(selectCard, ",");
 

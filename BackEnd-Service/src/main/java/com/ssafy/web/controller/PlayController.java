@@ -31,7 +31,6 @@ public class PlayController {
 	PlayService playService;
 
 	@GetMapping("/objectcard")
-	@Cacheable(value="cardCame", cacheManager = "cacheManager")
 	@ApiOperation(value = "사물 카드 3장씩 조회")
 	public List<ObjectDto> getObjectCardList() {
 		return playService.objectCardPlay();

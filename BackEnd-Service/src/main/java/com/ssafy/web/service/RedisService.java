@@ -65,7 +65,6 @@ public class RedisService {
 			for(int i=0; i<cards.size(); i++) {
 				String cardobj = cards.get(i).getImage()
 						+","+cards.get(i).getName()+","+cards.get(i).getQuestion();
-				System.out.println(cardobj);
 				hashOperations.put("cards", cards.get(i).getCardId(), cardobj);
 //				hashOper.rightPush("cards", cardobj);
 			}
