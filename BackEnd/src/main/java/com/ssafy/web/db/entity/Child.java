@@ -35,7 +35,7 @@ public class Child {
 	@JoinColumn(name = "parent_id", columnDefinition = "CHAR(13)", referencedColumnName = "parent_id", nullable = false)
 	private Parent parent;
 
-	@Column(name = "name", columnDefinition = "VARCHAR(20)", nullable = false, unique = true)
+	@Column(name = "name", columnDefinition = "VARCHAR(20)", nullable = false)
 	private String name;
 
 	@Column(name = "birth", columnDefinition = "DATE", nullable = false)
