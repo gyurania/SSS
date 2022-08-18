@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div id="titleDiv">
       <h1>{{this.childData.childName}} 님의 게임 기록</h1>
     </div>
@@ -8,6 +9,7 @@
       <LineChart :childId="this.childData.childId" id="chartDiv" />
       <base-button id="moveChildrenBtn" @click="moveChildren">뒤로가기</base-button>
     </div>
+
     
   </div>
 

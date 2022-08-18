@@ -38,7 +38,7 @@
 
         <!--버튼-->
         <div class="col-sm-12 row justify-content-center mt-lg-5">
-          <base-button @click="this.$router.push('/')" class="col-md-2 mt-2">취소</base-button>
+          <base-button @click="$router.push('/childReserveShowCounselor')" class="col-md-2 mt-2">취소</base-button>
           <!-- <base-button class="col-md-2 mt-2">수정하기</base-button> -->
           <base-button @click="saveRecord" class="col-md-2 mt-2">완료</base-button>
         </div>
@@ -51,10 +51,13 @@
 import { mapState, mapMutations } from "vuex";
 import axios from 'axios'
 export default {
+  mounted () {
+    console.log(this.$route.params);
+  },
   data() {
     return {
       datas: this.$route.params,
-      record: null,
+      record: this.$route.params.record
     }
   },
   computed: {
@@ -68,8 +71,12 @@ export default {
         consultNo: this.datas.consultNo,
         record: this.record
       })
+      .then(res => {
+        console.log(res.data);
+        console.log('success');
+      })
       this.record = null
-      this.$router.push('/')
+      this.$router.push('/childReserveShowCounselor')
     },
   },
 }
