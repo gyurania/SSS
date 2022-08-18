@@ -87,15 +87,15 @@ export default {
         datasets: [
           {
             label: '점수',
-            backgroundColor: 'red',
+            backgroundColor: 'rgb(255, 99, 132)',
             data: [],
-            borderColor: 'red'
+            borderColor: 'rgb(255, 99, 132)'
           },
           {
             label: '놀이 시간',
-            backgroundColor: 'blue',
+            backgroundColor: 'rgb(255, 205, 86)',
             data: [],
-            borderColor: 'blue'
+            borderColor: 'rgb(255, 205, 86)'
           }
         ]
       },
@@ -114,15 +114,15 @@ export default {
                 datasets: [
                 {
                     label: '점수',
-                    backgroundColor: 'red',
+                    backgroundColor: 'rgb(255, 99, 132)',
                     data: [],
-                    borderColor: 'red'
+                    borderColor: 'rgb(255, 99, 132)'
                 },
                 {
                     label: '놀이 시간',
-                    backgroundColor: 'blue',
+                    backgroundColor: 'rgb(255, 205, 86)',
                     data: [],
-                    borderColor: 'blue'
+                    borderColor: 'rgb(255, 205, 86)'
                 }
                 ]
             }
