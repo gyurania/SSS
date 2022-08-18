@@ -20,7 +20,7 @@
             <!--카드 이름 나오는 곳 (1단계)-->
             <div class="cardshow">
               <div v-if="dialog0" class="text-center card_name">
-                <b>{{ this.solution }}</b>
+                <b>{{ this.solutionText }}</b>
               </div>
             </div>
             <!--카드 이름 나오는 곳 (1단계)-->
@@ -124,6 +124,7 @@ export default {
       loading: [false, false, false],
       selection: 1,
       solution: [],
+      solutionText: null,
       dialog1: false,
       dialog0: false,
 
@@ -158,12 +159,16 @@ export default {
     },
 
     createCards() {
+      if (this.gameCount == 0) {
+        this.timeSequence = [];
+      }
       this.gameSet = true;
 
       console.log(`올바른 카드를 고르세요`);
       this.$store.commit("sampleCards");
       setTimeout(() => {
         this.solution = this.$store.state.cardGame.solutionCard[0];
+        this.solutionText = this.$store.state.cardGame.solutionCard[2];
         console.log(`solution : ${this.solution}`);
         this.selectedCards = this.$store.state.cardGame.selectedCards;
         this.dialog0 = true;
@@ -195,7 +200,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 5) {
+        if (this.gameCount === 2) {
           let totalTimeMilSec = this.timeSequence.reduce((a, b) => a + b, 0);
 
           let hour = parseInt(totalTimeMilSec / 3600000);

@@ -18,11 +18,11 @@
         <div class="container">
           <card shadow class="py-5 px-md-5 card-profile mt--300" no-body>
             <!--카드 이름 나오는 곳 (1단계)-->
-            <div class="cardshow">
+            <!-- <div class="cardshow">
               <div v-if="dialog0" class="text-center card_name">
-                <b>{{ this.solution }}</b>
+                <b>{{ this.solutionText }}</b>
               </div>
-            </div>
+            </div> -->
             <!--카드 이름 나오는 곳 (1단계)-->
             <div
               class="justify-content-center align-items-center my-5 py-5"
@@ -101,6 +101,9 @@
                   <!-- :src='card[1]' -->
                 </div>
               </div>
+              <div id="solutionTextDiv">
+                <h1>{{solutionText}}</h1>  
+              </div>
             </div>
             <!--카드 이미지 -->
           </card>
@@ -124,8 +127,9 @@ export default {
       loading: [false, false, false],
       selection: 1,
       solution: [],
+      solutionText: null,
       dialog1: false,
-      dialog0: false,
+      // dialog0: false,
 
       gameCountPerGame: 0,
       gameCount: 0,
@@ -163,9 +167,10 @@ export default {
       this.$store.commit("sampleCards");
       setTimeout(() => {
         this.solution = this.$store.state.cardGame.solutionCard[0];
+        this.solutionText = this.$store.state.cardGame.solutionCard[2];
         console.log(`solution : ${this.solution}`);
         this.selectedCards = this.$store.state.cardGame.selectedCards;
-        this.dialog0 = true;
+        // this.dialog0 = true;
       }, 1000);
 
       this.timeStart = this.getTimeNow();
@@ -270,11 +275,10 @@ export default {
     },
   },
   watch: {
-    dialog0(val) {
-      if (!val) return;
-      setTimeout(() => (this.dialog0 = false), 1000);
-    },
-
+    // dialog0(val) {
+    //   if (!val) return;
+    //   setTimeout(() => (this.dialog0 = false), 1000);
+    // },
     dialog1(val) {
       if (!val) return;
 
@@ -355,5 +359,11 @@ export default {
   transform: translateY(-50%);
   font-size: 5rem;
   font-weight: bolder;
+}
+
+#solutionTextDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
 }
 </style>
