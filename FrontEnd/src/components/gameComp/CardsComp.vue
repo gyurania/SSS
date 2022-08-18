@@ -146,6 +146,8 @@ export default {
         score: null,
       },
 
+      gameStageNum: 5,
+
       childData: this.$route.params,
     };
   },
@@ -199,7 +201,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 5) {
+        if (this.gameCount === this.gameStageNum) {
           let totalTimeMilSec = this.timeSequence.reduce((a, b) => a + b, 0);
 
           let hour = parseInt(totalTimeMilSec / 3600000);
@@ -217,8 +219,8 @@ export default {
           console.log(this.totalTime);
           console.log(this.successCount);
           let now = new Date();
-          this.gameData.score = this.successCount;
-          this.gameData.totalTime = this.totalTime;
+          this.gameData.score = this.successCount / this.gameStageNum * 10;
+          this.gameData.totalTime = this.totalTime / this.gameStageNum * 2;
           let dataSend = {
             score: this.successCount,
             totalTime: this.totalTime,
