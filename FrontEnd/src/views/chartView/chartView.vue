@@ -65,12 +65,5 @@ export default {
   display: flex;
   justify-content: center;
 }
-<<<<<<< HEAD
 
-body{
-  background: linear-gradient(150deg, #fdffbc 15%, #ffeebb 70%, #ffdcb8 94%);
-}
 </style>
-=======
-</style>
->>>>>>> eeacea92b91171d4ccc967fd9d2ff7c662a0d365
