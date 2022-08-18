@@ -83,7 +83,9 @@
 <script>
 export default {
   components: {},
-
+  props: {
+    childId: String,
+  },
   data() {
     return {
       selectedCards: [],
@@ -158,7 +160,7 @@ export default {
           axios.post("https://i7a606.q.ssafy.io/service-api/play/result", {
             score: this.successCount,
             totalTime: totalTime,
-            childId: "childId",
+            childId: childId,
             createTime: new Date(),
           });
           this.gameSet = false;

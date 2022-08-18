@@ -22,7 +22,7 @@
         <!--학생 얼굴 들어갈 자리 end-->
 
         <div id="cardGameDiv" v-if="playingNow">
-          <cards-comp></cards-comp>
+          <cards-comp :childId="this.child_Id"></cards-comp>
         </div>
 
         <div

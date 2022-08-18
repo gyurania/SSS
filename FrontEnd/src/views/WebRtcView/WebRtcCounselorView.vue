@@ -211,7 +211,7 @@ export default {
     },
 
     joinSession() {
-      /*       axios
+      axios
         .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
           theraId: this.ids.thera_Id,
           childId: this.ids.child_Id,
@@ -219,7 +219,7 @@ export default {
         })
         .then((res) => {
           this.consultNo = res.data.consultNo;
-        }); */
+        });
 
       //this.mySessionId = "Session_" + this.ids.child_id;
       this.mySessionId = "Session_" + "A";
@@ -313,15 +313,8 @@ export default {
       this.OV = undefined;
 
       window.removeEventListener("beforeunload", this.leaveSession);
-      this.$router.push({
-        name: "childReserveShowCounselor",
-        params: {
-          reservTime: datetime,
-          childId: String,
-          childName: String,
-          parentName: String,
-        },
-      });
+
+      this.$router.push('/')
     },
 
     updateMainVideoStreamManager(stream) {
