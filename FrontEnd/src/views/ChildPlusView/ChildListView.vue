@@ -240,7 +240,7 @@ export default {
         })
           .then((res) => {
             console.log(res.data);
-            router.push({ name: "children" });
+            this.$router.go()
           })
           .catch((err) => {
             console.log(err.response);
