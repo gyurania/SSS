@@ -166,7 +166,7 @@
                   />
                 </div>
                 <!--회원가입 폼 연락처 end-->
-                <div v-if="$route.params.isTherapist">
+                <div class="col-lg-12  mb-2" v-if="$route.params.isTherapist">
                   <counselor @counselor="counselor_data" />
                 </div>
 
@@ -213,8 +213,8 @@ export default {
       checkid: false,
 
       checkEmail: false,
-      emailCode1: '',
-      emailCode2: ''
+      emailCode1: "",
+      emailCode2: "",
     };
   },
   methods: {
@@ -277,15 +277,18 @@ export default {
         email: this.email,
         phone: this.phone,
         address: this.address,
-        profile_url: 'null',
+        profile_url: "null",
         expertise: this.expertises,
         academicCareers: this.academicCareers,
         careers: this.careers,
         licences: this.licences,
         thera_intro: this.thera_intro,
-      })
-      frm.append("theraInfo", new Blob([theraInfo], { type: "application/json" }));
-      frm.append("profile", this.profile_url.files[0])
+      });
+      frm.append(
+        "theraInfo",
+        new Blob([theraInfo], { type: "application/json" })
+      );
+      frm.append("profile", this.profile_url.files[0]);
       if (
         this.id &&
         this.checkid === true &&
@@ -298,27 +301,27 @@ export default {
         this.checkEmail === true
       ) {
         this.$axios({
-          url: 'https://i7a606.q.ssafy.io/service-api/user/therapist',
-          method: 'post',
+          url: "https://i7a606.q.ssafy.io/service-api/user/therapist",
+          method: "post",
           data: frm,
           headers: {
-            'Content-Type': 'multipart/form-data'
-          }
+            "Content-Type": "multipart/form-data",
+          },
         })
           .then((res) => {
-            console.log(res.data)
+            console.log(res.data);
             this.$router.push("/login");
           })
           .catch((err) => {
-            console.log(err.response)
-          })
+            console.log(err.response);
+          });
       } else {
         if (!this.name) {
           alert("성함을 입력해주세요.");
         } else if (!this.id) {
           alert("아이디를 입력해주세요.");
         } else if (this.checkid === false) {
-          alert("아이디 중복체크를 진행해주세요")
+          alert("아이디 중복체크를 진행해주세요");
         } else if (!this.password1) {
           alert("비밀번호를 입력해주세요.");
         } else if (!this.password2) {
@@ -326,7 +329,7 @@ export default {
         } else if (!this.email) {
           alert("이메일을 입력해주세요.");
         } else if (this.checkEmail === false) {
-          alert("이메일 인증번호 확인을 진행해주세요.")
+          alert("이메일 인증번호 확인을 진행해주세요.");
         } else if (!this.phone) {
           alert("연락처를 입력해주세요.");
         } else if (!this.address) {
@@ -366,7 +369,7 @@ export default {
         } else if (!this.id) {
           alert("아이디를 입력해주세요.");
         } else if (this.checkid === false) {
-          alert("아이디 중복체크를 진행해주세요")
+          alert("아이디 중복체크를 진행해주세요");
         } else if (!this.password1) {
           alert("비밀번호를 입력해주세요.");
         } else if (!this.password2) {
@@ -374,7 +377,7 @@ export default {
         } else if (!this.email) {
           alert("이메일을 입력해주세요.");
         } else if (this.checkEmail === false) {
-          alert("이메일 인증번호 확인을 진행해주세요.")
+          alert("이메일 인증번호 확인을 진행해주세요.");
         } else if (!this.phone) {
           alert("연락처를 입력해주세요.");
         } else if (!this.address) {

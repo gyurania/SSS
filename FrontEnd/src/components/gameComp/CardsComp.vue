@@ -23,7 +23,7 @@
           <!--카드 이름 나오는 곳 (1단계)-->
           <div
             class="justify-content-center align-items-center my-5 py-5"
-            v-if="!this.gameSet && this.gameData.score === null "
+            v-if="!this.gameSet && this.gameData.score === null"
           >
             <h2 class="display-2">
               <div class="text-center mb-5">
@@ -44,13 +44,15 @@
 
           <div
             class="justify-content-center align-items-center my-5 py-5"
-            v-if="!this.gameSet && this.gameData.score !== null "
+            v-if="!this.gameSet && this.gameData.score !== null"
           >
             <h2 class="display-2">
               <div class="text-center mb-5">
+
                 <h2>{{this.childData.childName}} 님의 결과</h2>
                 <h2>점수 : {{this.gameData.score}}</h2>
                 <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
+
               </div>
             </h2>
             <div class="row justify-content-center">
@@ -83,7 +85,7 @@
                   alt="nothing"
                   class="img-fluid rounded shadow-lg"
                 />
-                  <!-- :src='card[1]' -->
+                <!-- :src='card[1]' -->
               </div>
             </div>
           </div>
@@ -95,7 +97,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   components: {},
   mounted () {
@@ -125,8 +127,7 @@ export default {
         score: null,
       },
 
-      childData: this.$route.params
-
+      childData: this.$route.params,
     };
   },
   methods: {
@@ -139,12 +140,12 @@ export default {
 
     createCards() {
       if (this.gameCount == 0) {
-        this.timeSequence = []
+        this.timeSequence = [];
       }
       this.gameSet = true;
 
       console.log(`올바른 카드를 고르세요`);
-      this.$store.commit("sampleCards")
+      this.$store.commit("sampleCards");
       setTimeout(() => {
         this.solution = this.$store.state.cardGame.solutionCard[0];
         console.log(`solution : ${this.solution}`);
@@ -179,21 +180,26 @@ export default {
         this.dialog1 = "false";
 
         if (this.gameCount === 1) {
+
           let totalTimeMilSec = this.timeSequence.reduce((a,b) => a + b, 0)
 
-          let hour = parseInt(totalTimeMilSec / 3600000)
+          let hour = parseInt(totalTimeMilSec / 3600000);
 
-          let min = parseInt((totalTimeMilSec % 3600000) / 60000)
+          let min = parseInt((totalTimeMilSec % 3600000) / 60000);
 
-          let sec = parseInt((totalTimeMilSec % 60000) / 1000)
-          
-          this.totalTime = `${hour.toString().padStart(2, 0)}:${min.toString().padStart(2, 0)}:${sec.toString().padStart(2, 0)}`
+          let sec = parseInt((totalTimeMilSec % 60000) / 1000);
+
+          this.totalTime = `${hour
+            .toString()
+            .padStart(2, 0)}:${min
+            .toString()
+            .padStart(2, 0)}:${sec.toString().padStart(2, 0)}`;
 
           console.log(this.totalTime);
           console.log(this.successCount);
-          let now = new Date()
-          this.gameData.score = this.successCount
-          this.gameData.totalTime = this.totalTime
+          let now = new Date();
+          this.gameData.score = this.successCount;
+          this.gameData.totalTime = this.totalTime;
           let dataSend = {
             score: this.successCount,
             totalTime: this.totalTime,
@@ -202,16 +208,17 @@ export default {
           }
           
           console.log(dataSend);
-          
-          axios.post('https://i7a606.q.ssafy.io/service-api/play/result', dataSend)
+
+          axios.post(
+            "https://i7a606.q.ssafy.io/service-api/play/result",
+            dataSend
+          );
 
           this.gameSet = false;
-          this.gameCountPerGame = 0; 
+          this.gameCountPerGame = 0;
           this.successCount = 0;
           this.gameCount = 0;
           this.timeSequence = [];
-          
-          
         } else {
           this.gameSet = true;
           this.gameCountPerGame = 0;
