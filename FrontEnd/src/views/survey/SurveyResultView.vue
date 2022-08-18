@@ -55,9 +55,9 @@ export default {
   //   },
   // },
   created() {
-    console.log(this.$route.params.childId)
+    console.log(this.$store.state.accounts.childInfo.childId)
     axios({
-      url: `https://i7a606.q.ssafy.io/service-api/answer/getAnswer/${this.$route.params.childId}`,
+      url: `https://i7a606.q.ssafy.io/service-api/answer/getAnswer/${this.$store.state.accounts.childInfo.childId}`,
       method: 'get',
     })
       .then(res => {

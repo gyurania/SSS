@@ -12,6 +12,7 @@
               <h3 class="col-lg-10">
                 <div class="text-muted text-left mb-3">
                   <b>문진표</b>
+                  <!-- <input type="radio" id="1" value="2"> -->
                 </div>
               </h3>
 
@@ -21,6 +22,97 @@
                   <b> Q{{ question.number }}. {{ question.title }} </b>
                 </div>
                 <div class="object_answer row col-lg-12 mt-3 py-3">
+                  <!-- <p class="lead">
+                    <input
+                      style="cursor:pointer"
+                      type="radio"
+                      :id="question.object_answers[0]+i"
+                      v-model="answer[i]"
+                      :value="{
+                        'options': question.object_answers[0][0],
+                        'score': Number(question.object_answers[0][1])
+                      }"
+                      @change="qwer(Number(question.object_answers[0][1]))"
+                       name="radio_answer"
+                    />
+                    <label for="radio" class="score">
+                      {{ question.object_answers[0][1] }}</label
+                    >
+                    <label class="lead" :for="question.object_answers[0]+i" style="cursor:pointer">{{ question.object_answers[0][0] }}</label>
+                  </p>
+                  <p class="lead">
+                    <input
+                      style="cursor:pointer"
+                      type="radio"
+                      :id="question.object_answers[1]+i"
+                      v-model="answer[i]"
+                      :value="{
+                        'options': question.object_answers[1][0],
+                        'score': Number(question.object_answers[1][1])
+                      }"
+                      @change="qwer(Number(question.object_answers[1][1]))"
+                      name="radio_answer"
+                    />
+                    <label for="radio" class="score">
+                      {{ question.object_answers[1][1] }}</label
+                    >
+                    <label class="lead" :for="question.object_answers[1]+i" style="cursor:pointer">{{ question.object_answers[1][0] }}</label>
+                  </p>
+                  <p class="lead">
+                    <input
+                      style="cursor:pointer"
+                      type="radio"
+                      :id="question.object_answers[2]+i"
+                      v-model="answer[i]"
+                      :value="{
+                        'options': question.object_answers[2][0],
+                        'score': Number(question.object_answers[2][1])
+                      }"
+                      @change="qwer(Number(question.object_answers[2][1]))"
+                      name="radio_answer"
+                    />
+                    <label for="radio" class="score">
+                      {{ question.object_answers[2][1] }}</label
+                    >
+                    <label class="lead" :for="question.object_answers[2]+i" style="cursor:pointer">{{ question.object_answers[2][0] }}</label>
+                  </p>
+                  <p class="lead">
+                    <input
+                      style="cursor:pointer"
+                      type="radio"
+                      :id="question.object_answers[3]+i"
+                      v-model="answer[i]"
+                      :value="{
+                        'options': question.object_answers[3][0],
+                        'score': Number(question.object_answers[3][1])
+                      }"
+                      @change="qwer(Number(question.object_answers[3][1]))"
+                      name="radio_answer"
+                      checked
+                    />
+                    <label for="radio" class="score">
+                      {{ question.object_answers[3][1] }}</label
+                    >
+                    <label class="lead" :for="question.object_answers[3]+i" style="cursor:pointer">{{ question.object_answers[3][0] }}</label>
+                  </p>
+                  <p class="lead">
+                    <input
+                      style="cursor:pointer"
+                      type="radio"
+                      :id="question.object_answers[4]+i"
+                      v-model="answer[i]"
+                      :value="{
+                        'options': question.object_answers[4][0],
+                        'score': Number(question.object_answers[4][1])
+                      }"
+                      @change="qwer(Number(question.object_answers[4][1]))"
+                      name="radio_answer"
+                    />
+                    <label for="radio" class="score">
+                      {{ question.object_answers[4][1] }}</label
+                    >
+                    <label class="lead" :for="question.object_answers[4]+i" style="cursor:pointer">{{ question.object_answers[4][0] }}</label>
+                  </p> -->
                   <div
                     v-for="(object_answer, j) in question.object_answers"
                     :key="j"
@@ -30,17 +122,19 @@
                         <input
                           style="cursor:pointer"
                           type="radio"
-                          :id="question.object_answers[j]"
+                          :name="i"
+                          :id="question.object_answers[j]+i"
                           v-model="answer[i]"
                           :value="{
                             'options': object_answer[0],
-                            'score': Number(object_answer[1])
+                            'score': object_answer[1]
                           }"
+                          @change="qwer(j)"
                         />
                         <label for="radio" class="score">
                           {{ object_answer[1] }}</label
                         >
-                      <label class="lead" :for="question.object_answers[j]" style="cursor:pointer">{{ object_answer[0] }}</label>
+                        <label class="lead" :for="question.object_answers[j]+i" style="cursor:pointer">{{ object_answer[0] }}</label>
                       </p>
                     </div>
                   </div>
@@ -75,7 +169,20 @@ export default {
     };
   },
   methods: {
+    qwer(index) {
+      console.log(index)
+    },
+    asas(index) {
+      if (index === 1) {
+        console.log(1)
+        return "checked"
+      } else {
+        console.log(0)
+        return false
+      }
+    },
     onSubmit() {
+      console.log(this.answer)
       const newAnswer = this.answer.filter((x, i) => x != null)
       if (newAnswer.length === 23) {
         // for (let i = 0; i < 23; i++) {
