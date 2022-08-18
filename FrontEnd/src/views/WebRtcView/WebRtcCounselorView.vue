@@ -190,6 +190,7 @@ export default {
     ...mapMutations(["ADD_MEMO"]),
     addMemo() {
       if (this.newMemo.length == 0) {
+        
         alert("Fill in the blank!");
         return;
       }
