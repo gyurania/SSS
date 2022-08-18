@@ -212,14 +212,15 @@ export default {
     },
 
     joinSession() {
+      console.log(`${this.theraId} ${this.childId} ${this.parentId}`)
       axios
         .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
           theraId: this.theraId,
           childId: this.childId,
-          parentId: this.parentId,
+          parentId: this.parentId
         })
         .then((res) => {
-          this.consultNo = res.data.consultNo;
+          this.consultNo = res.data
         });
 
       this.mySessionId = "Session_" + this.childId;
