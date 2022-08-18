@@ -26,7 +26,7 @@
             <!--카드 이름 나오는 곳 (1단계)-->
             <div
               class="justify-content-center align-items-center my-5 py-5"
-              v-if="!this.gameSet"
+              v-if="!this.gameSet && this.gameData.score === null"
             >
               <h2 class="display-2">
                 <div class="text-center mb-5">
@@ -41,6 +41,36 @@
                   @click="createCards"
                 >
                   게임시작하기
+                </base-button>
+
+                <base-button
+                  v-if="!gameSet"
+                  @click="endGame"
+                  class="col-3 end_btn"
+                  >게임 종료하기</base-button
+                >
+              </div>
+            </div>
+
+            <div
+              class="justify-content-center align-items-center my-5 py-5"
+              v-if="!this.gameSet && this.gameData.score !== null"
+            >
+              <h2 class="display-2">
+                <div class="text-center mb-5">
+                  <h2>{{this.childData.name}} 님의 결과</h2>
+                  <h2>점수 : {{this.gameData.score}}</h2>
+                  <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
+                </div>
+              </h2>
+              <div class="row justify-content-center">
+                <base-button
+                  class="col-3 start_btn"
+                  id="startGameBtn"
+                  v-if="!this.gameSet"
+                  @click="createCards"
+                >
+                  게임다시하기
                 </base-button>
 
                 <base-button
@@ -83,7 +113,9 @@
 <script>
 export default {
   components: {},
-
+  props: {
+    childId: String,
+  },
   data() {
     return {
       selectedCards: [],
@@ -158,7 +190,7 @@ export default {
           axios.post("https://i7a606.q.ssafy.io/service-api/play/result", {
             score: this.successCount,
             totalTime: totalTime,
-            childId: "childId",
+            childId: childId,
             createTime: new Date(),
           });
           this.gameSet = false;

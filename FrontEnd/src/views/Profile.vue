@@ -21,9 +21,9 @@
                                     </a>
                                 </div>
                             </div>
-                            <!-- <div class="col-lg-4 order-lg-1">
+                            <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
-                                    <div>
+                                    <!-- <div>
                                         <span class="heading">22</span>
                                         <span class="description">Friends</span>
                                     </div>
@@ -34,48 +34,66 @@
                                     <div>
                                         <span class="heading">89</span>
                                         <span class="description">Comments</span>
-                                    </div>
+                                    </div> -->
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="text-center mt-5">
-                            <h3>
+                            <h1>
                               {{ userInfo["name"] }}
                                 <span class="font-weight-light"></span>
-                            </h3>
-                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>
-                              {{ userInfo["email"] }}</div>
-                            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>
-                              {{ userInfo["phone"] }}</div>
-                            <div><i class="ni education_hat mr-2"></i>
-                              {{ userInfo["address"] }}</div>
+                            </h1>
+                            <div class="contactInfo">
+                              <h4>Contact</h4>
+                              <div class="h6 font-weight-300"><i class="ni mr-2"></i>
+                                {{ userInfo["email"] }}</div>
+                              <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>
+                                {{ userInfo["phone"] }}</div>
+                              <div><i class="ni education_hat mr-2"></i>
+                                {{ userInfo["address"] }}</div>
+                            </div>
                         </div>
                         <div class="mt-5 py-5 border-top text-center" v-if="this.$store.state.accounts.userid.slice(0, 1) === 't'">
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
-                                    <div><i class="ni education_hat mr-2"></i>
-                                      {{ userInfo["expertises"] }}</div>
-                                    <div><i class="ni education_hat mr-2"></i>
-                                      {{ userInfo["academy"] }}</div>
-                                    <div><i class="ni education_hat mr-2"></i>
-                                      {{ userInfo["careers"] }}</div>
-                                    <div><i class="ni education_hat mr-2"></i>
-                                      {{ userInfo["licence"] }}</div>
-                                    <div><i class="ni education_hat mr-2"></i>
-                                      {{ userInfo["thera_intro"] }}</div>
-                                    <a href="#">Show more</a>
+                                  <h4>전문분야</h4>
+                                  <div v-for="(expertise, i) in userInfo.expertises" :key="i">
+                                    {{ expertise["isKind"] }}
+                                  </div>
+                                  <hr>
+                                  <h4>학력</h4>
+                                  <div v-for="(aca, i) in userInfo.academy" :key="i">
+                                    {{ aca["name"] }} {{ aca["major"] }}
+                                  </div>
+                                  <hr>
+                                  <h4>경력</h4>
+                                  <div v-for="(career, i) in userInfo.careers" :key="i">
+                                    {{ career["name"] }} {{ career["role"] }}
+                                  </div>
+                                  <hr>
+                                  <h4>자격증</h4>
+                                  <div v-for="(lic, i) in userInfo.licence" :key="i">
+                                    {{ lic["name"] }}
+                                  </div>
+                                  <hr>
+                                  {{ userInfo["thera_intro"] }}
+                                  <!-- <a href="#">Show more</a> -->
                                 </div>
                             </div>
                         </div>
-                    </div>
-                  <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                      <div class="card-profile-actions py-4 mt-lg-0">
                         <router-link to="/update">
                           <base-button type="info" size="sm" class="mr-4">회원정보 수정</base-button>
                         </router-link>
                           <!-- <base-button type="default" size="sm" class="float-right">회원 탈퇴</base-button> -->
+                    </div>
+                  <!-- <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                      <div class="card-profile-actions py-4 mt-lg-0">
+                        <router-link to="/update">
+                          <base-button type="info" size="sm" class="mr-4">회원정보 수정</base-button>
+                        </router-link>
+                          <base-button type="default" size="sm" class="float-right">회원 탈퇴</base-button>
                       </div>
-                  </div>
+                  </div> -->
                 </card>
             </div>
         </section>
@@ -126,5 +144,10 @@ export default {
   }
 };
 </script>
+
 <style>
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+}
 </style>

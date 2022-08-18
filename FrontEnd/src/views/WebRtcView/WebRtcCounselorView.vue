@@ -60,14 +60,14 @@
         <div
           class="col-md-12 row RtcFunction justify-content-center m-0 p-0 align-items-center"
         >
-          <base-button
+          <!-- <base-button
             data-toggle="modal"
             data-target="#exampleModal"
             type="success"
             @click="ShowCardGame"
             class="col-sm-2 align-self-center"
             >카드게임</base-button
-          >
+          > -->
 
           <!-- <base-button type="success" class="col-md-1 align-self-center"
             >피아노게임</base-button
@@ -211,7 +211,7 @@ export default {
     },
 
     joinSession() {
-      /*       axios
+      axios
         .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
           theraId: this.ids.thera_Id,
           childId: this.ids.child_Id,
@@ -219,7 +219,7 @@ export default {
         })
         .then((res) => {
           this.consultNo = res.data.consultNo;
-        }); */
+        });
 
       //this.mySessionId = "Session_" + this.ids.child_id;
       this.mySessionId = "Session_" + "A";
@@ -313,15 +313,8 @@ export default {
       this.OV = undefined;
 
       window.removeEventListener("beforeunload", this.leaveSession);
-      this.$router.push({
-        name: "childReserveShowCounselor",
-        params: {
-          reservTime: datetime,
-          childId: String,
-          childName: String,
-          parentName: String,
-        },
-      });
+
+      this.$router.push({name: 'childReserveShowCounselor'})
     },
 
     updateMainVideoStreamManager(stream) {
