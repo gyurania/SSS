@@ -37,9 +37,12 @@
         </div>
 
         <!--버튼-->
-        <div class="col-sm-12 row justify-content-center mt-lg-5">
+        <div class="col-sm-12 row justify-content-center mt-lg-5" v-if="this.$store.state.accounts.userid.slice(0, 1) === 't'">
           <base-button @click="$router.push('/childReserveShowCounselor')" class="col-md-2 mt-2">취소</base-button>
-          <!-- <base-button class="col-md-2 mt-2">수정하기</base-button> -->
+          <base-button @click="saveRecord" class="col-md-2 mt-2">완료</base-button>
+        </div>
+        <div class="col-sm-12 row justify-content-center mt-lg-5" v-else>
+          <base-button @click="$router.push('/childReserveShow')" class="col-md-2 mt-2">취소</base-button>
           <base-button @click="saveRecord" class="col-md-2 mt-2">완료</base-button>
         </div>
       </card>

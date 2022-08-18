@@ -9,7 +9,7 @@
       <div class="container">
         <card shadow class="py-5 px-md-5 card-profile mt--300" no-body>
           <div id="titleDiv">
-            <h1>{{ this.childData.childName }} 님의 게임 기록</h1>
+            <h1>{{ this.childData.childName }} 님의 놀이 기록</h1>
           </div>
 
           <div id="baseDiv">
