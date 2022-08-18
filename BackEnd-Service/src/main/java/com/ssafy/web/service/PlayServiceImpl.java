@@ -87,10 +87,11 @@ public class PlayServiceImpl implements PlayService {
 	public List<ObjectDto> objectCardPlay() {
 //		int totalCard = objectCardRepository.findAll().size();
 		//레디스에 카드 넣기
-		redisService.setCards();
-		//		if(redisService.getCards(1) == null) {
-//			redisService.setCards();
-//		}
+//		redisService.setCards();
+		if(redisService.getCards(1) == null) {
+			System.out.println("카드충전");
+			redisService.setCards();
+		}
 		for(int i=1; i<=21; i++)
 			System.out.println(redisService.getCards(i));
 //		List<String> cards = redisService.getCards();
