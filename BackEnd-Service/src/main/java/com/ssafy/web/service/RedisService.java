@@ -42,21 +42,35 @@ public class RedisService {
 		}
 		
 	}
-	//카드  레디스에 저장 
+//	//카드  레디스에 저장 
+//		public void setCards() {
+//			List<ObjectCard> cards = obj.findAll();
+//			
+//			ListOperations<String, String> stringOperations = redisTemplate.opsForList();
+//			
+//			for(int i=0; i<cards.size(); i++) {
+//				String cardobj = cards.get(i).getImage()
+//						+","+cards.get(i).getName()+","+cards.get(i).getQuestion();
+//				System.out.println(cardobj);
+//				stringOperations.rightPush("cards", cardobj);
+//			}
+//			
+//		}
+		//카드  레디스에 저장 
 		public void setCards() {
 			List<ObjectCard> cards = obj.findAll();
-			
-			ListOperations<String, String> stringOperations = redisTemplate.opsForList();
+			HashOperations<String, Integer, String> hashOperations = redisTemplate.opsForHash();
+//			ListOperations<String, String> stringOperations = redisTemplate.opsForList();
 			
 			for(int i=0; i<cards.size(); i++) {
 				String cardobj = cards.get(i).getImage()
 						+","+cards.get(i).getName()+","+cards.get(i).getQuestion();
 				System.out.println(cardobj);
-				stringOperations.rightPush("cards", cardobj);
+				hashOperations.put("cards", cards.get(i).getCardId(), cardobj);
+//				hashOper.rightPush("cards", cardobj);
 			}
 			
 		}
-	
 	//질문 불러오기
 	public List<String> getQuestions(){
 		ListOperations<String, String> stringOperations = redisTemplate.opsForList();
@@ -65,14 +79,19 @@ public class RedisService {
 		return ques;
 	}
 
-	//카드 불러오기
-	public List<String> getCards(){
-		ListOperations<String, String> stringOperations = redisTemplate.opsForList();
-		Long size= stringOperations.size("cards");
-		List<String> objs = stringOperations.range("cards", 0, size-1); 
-		return objs;
+//	//카드 불러오기
+//	public List<String> getCards(){
+//		ListOperations<String, String> stringOperations = redisTemplate.opsForList();
+//		Long size= stringOperations.size("cards");
+//		List<String> objs = stringOperations.range("cards", 0, size-1); 
+//		return objs;
+//	}
+//	
+	public String getCards(int cardNo){
+		HashOperations<String, Integer, String> hashOperations= redisTemplate.opsForHash();
+//		Long size=  hashOperations.size("cards");
+		return hashOperations.get("cards", cardNo);
 	}
-	
 	public void setValues(String key, String data) {
 		ValueOperations<String, String> values= redisTemplate.opsForValue();
 		values.set(key,data);
@@ -91,6 +110,7 @@ public class RedisService {
 	public void deleteValues(String key) {
 		redisTemplate.delete(key);
 	}
+	
 	
 	
 }

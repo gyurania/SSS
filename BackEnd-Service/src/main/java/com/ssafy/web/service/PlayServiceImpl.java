@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.StringTokenizer;
 
+import javax.persistence.Cacheable;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,12 +86,12 @@ public class PlayServiceImpl implements PlayService {
 	@Override
 	public List<ObjectDto> objectCardPlay() {
 //		int totalCard = objectCardRepository.findAll().size();
-		//DB에서 카드 데이터 다 가지고 오기 
-		if(redisService.getCards().isEmpty()) {
+		//레디스에 카드 넣기
+		if(redisService.getCards(1) == null) {
 			redisService.setCards();
 		}
-		List<String> cards = redisService.getCards();
-//		System.out.println(cards.get(0));
+//		List<String> cards = redisService.getCards();
+////		System.out.println(cards.get(0));
 		
 		int totalCard = objectCardRepository.countAll();
 		int arr[] = new int[3]; // 카드 아이디 3개 저장
@@ -105,12 +107,12 @@ public class PlayServiceImpl implements PlayService {
 		}
 
 		System.out.printf("카드 아이디: %d %d %d ", arr[0], arr[1], arr[2]);
-
+	
 		List<ObjectDto> objectList = new ArrayList<ObjectDto>();
 		for (int i = 0; i < 3; i++) {
 //			ObjectCard card = objectCardRepository.findByCardId(arr[i]);
 			ObjectDto objectCard = new ObjectDto();
-			String selectCard = cards.get(arr[i]-1); 
+			String selectCard = redisService.getCards(arr[i]); 
 			//apple.jpg,사과,사과를 골라주세요!
 			StringTokenizer st = new StringTokenizer(selectCard, ",");
 
