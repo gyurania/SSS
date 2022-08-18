@@ -2,7 +2,9 @@ package com.ssafy.web.controller;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +33,12 @@ public class ConsultController {
 		return consultNo;
 	}
 	
+	@Caching(evict= {
+			@CacheEvict(value="consultTherapist", allEntries=true),
+			@CacheEvict(value="consultTherapistAndChildId", allEntries=true),
+			@CacheEvict(value="consultParentAndChildId", allEntries=true),
+			@CacheEvict(value="consultParent", allEntries=true)
+	})
 	/*메모 수정*/
 	@PutMapping("/memo")
 	public String updateMemo(@RequestBody ConsultRequest conreq) {
@@ -38,6 +46,12 @@ public class ConsultController {
 		return "success";
 	}
 	
+	@Caching(evict= {
+			@CacheEvict(value="consultTherapist", allEntries=true),
+			@CacheEvict(value="consultTherapistAndChildId", allEntries=true),
+			@CacheEvict(value="consultParentAndChildId", allEntries=true),
+			@CacheEvict(value="consultParent", allEntries=true)
+	})
 	/*일지 수정*/
 	@PutMapping("/record")
 	public String updateRecord(@RequestBody ConsultRequest conreq) {
@@ -97,7 +111,7 @@ public class ConsultController {
 	@GetMapping("/parentcount/{parentId}/{childId}")
 	@Cacheable(value="consultParentByChildCount",key="#parentId + #childId", cacheManager = "cacheManager")
 	public int countByParentAndChild(@PathVariable("parentId") String parentId ,@PathVariable("childId") String childId){
-		return conService.countByTheraIdBychildId(parentId, childId);
+		return conService.countByParentIdBychildId(parentId, childId);
 	}
 	
 	
