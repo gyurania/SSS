@@ -23,7 +23,7 @@
                             </div>
                             <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
-                                    <div>
+                                    <!-- <div>
                                         <span class="heading">22</span>
                                         <span class="description">Friends</span>
                                     </div>
@@ -34,7 +34,7 @@
                                     <div>
                                         <span class="heading">89</span>
                                         <span class="description">Comments</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
