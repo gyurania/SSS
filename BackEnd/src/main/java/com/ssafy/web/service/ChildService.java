@@ -33,4 +33,6 @@ public interface ChildService {
 	// 상담사 -> 예약한 아동 정보 조회
 	ChildReservResponse getChildInfo(String childId) throws IOException;
 
+	int isSurvey(String child_id);
+
 }

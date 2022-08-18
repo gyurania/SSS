@@ -90,5 +90,17 @@ public class ChildController {
 			return "success";
 
 	}
+	
+	/*아동 flag 값 get*/
+	@GetMapping("/isSurvey/{child_id}")
+	public String isSurvey(@PathVariable("child_id") String child_id) {
+		int res= childService.isSurvey(child_id);
+		// 1 이면 답변 한 아이, 0 이면 답변 안한 애 
+		if(res==0) {
+			return "success";
+		} else 
+			return "fail";
+	}
+
 
 }

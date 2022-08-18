@@ -52,18 +52,20 @@ public class AnswerServiceImpl implements AnswerService{
 			log.debug("아동 아이디 없음");
 			return 0; 
 		}
-		String res = webClient.put().uri("/child/surveyFlag/"+childId).retrieve().bodyToMono(String.class)
+
+		String res = webClient.get().uri("/child/isSurvey/"+childId).retrieve().bodyToMono(String.class)
 				.block();
-		
 		if(res.equals("fail")) { // 없는 아동 or 이미 응답한 아동
-			log.debug("아동 아이디 오류");
-			return 0; }
+		log.debug("아동 아이디 오류");
+		return 0; }
+		
 		
 		
 		Answer ans = new Answer();
 		ans.setChildId(childId);
 		//응답문항, 점수 
 		List<Answerlist> ansLis = answerReq.getAnswer();
+		System.out.println(ansLis.toString());
 		String str="";
 		int score1=0;
 		int score2=0;
@@ -83,6 +85,10 @@ public class AnswerServiceImpl implements AnswerService{
 		ans.setScore3(score3);
 		
 		answerRepo.save(ans);
+		
+		//아동 survey flag 값 1로 변경
+		String result = webClient.put().uri("/child/surveyFlag/"+childId).retrieve().bodyToMono(String.class)
+				.block();
 		
 		//점수 합산하여, b_expertise_child 테이블에 데이터 저장 
 		int expNo = registChildExp(childId, score1, score2, score3);
