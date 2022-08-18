@@ -176,7 +176,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 1) {
+        if (this.gameCount === 5) {
           let totalTimeMilSec = this.timeSequence.reduce((a,b) => a + b, 0)
 
           let hour = parseInt(totalTimeMilSec / 3600000)
