@@ -203,8 +203,8 @@ export default {
       axios
         .get(
           `https://i7a606.q.ssafy.io/service-api/consult/therapistcount/${
-            this.ids.thera_Id
-          }/${this.ids.child_Id}`
+            this.theraId
+          }/${this.childId}`
         )
         .then((res) => {
           return res.data;
@@ -214,18 +214,18 @@ export default {
     joinSession() {
       axios
         .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
-          theraId: this.ids.thera_Id,
-          childId: this.ids.child_Id,
-          parentId: this.ids.parent_Id,
+          theraId: this.theraId,
+          childId: this.childId,
+          parentId: this.parentId,
         })
         .then((res) => {
           this.consultNo = res.data.consultNo;
         });
 
-      this.mySessionId = "Session_" + this.ids.child_id;
+      this.mySessionId = "Session_" + this.childId;
       // this.mySessionId = "Session_" + "A";
 
-      this.myUserName = this.ids.thera_id;
+      this.myUserName = this.theraId;
       // this.myUserName = "A";
 
       this.OV = new OpenVidu();
