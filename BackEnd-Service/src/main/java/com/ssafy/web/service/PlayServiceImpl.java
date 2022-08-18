@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class PlayServiceImpl implements PlayService {
 
 	@Autowired
 	WebClient webClient;
+	
+	@Autowired
+	RedisService redisService;
 
 	/** 보호자 -> 아동의 놀이 기록 조회 */
 	@Override
@@ -80,6 +84,13 @@ public class PlayServiceImpl implements PlayService {
 	@Override
 	public List<ObjectDto> objectCardPlay() {
 //		int totalCard = objectCardRepository.findAll().size();
+		//DB에서 카드 데이터 다 가지고 오기 
+		if(redisService.getCards().isEmpty()) {
+			redisService.setCards();
+		}
+		List<String> cards = redisService.getCards();
+//		System.out.println(cards.get(0));
+		
 		int totalCard = objectCardRepository.countAll();
 		int arr[] = new int[3]; // 카드 아이디 3개 저장
 
@@ -97,14 +108,16 @@ public class PlayServiceImpl implements PlayService {
 
 		List<ObjectDto> objectList = new ArrayList<ObjectDto>();
 		for (int i = 0; i < 3; i++) {
-			ObjectCard card = objectCardRepository.findByCardId(arr[i]);
+//			ObjectCard card = objectCardRepository.findByCardId(arr[i]);
 			ObjectDto objectCard = new ObjectDto();
+			String selectCard = cards.get(arr[i]-1); 
+			//apple.jpg,사과,사과를 골라주세요!
+			StringTokenizer st = new StringTokenizer(selectCard, ",");
 
-//			objectCard.setImage(card.getImage());
-			objectCard.setName(card.getName());
-			objectCard.setQuestion(card.getQuestion());
 
-			String url = PathUtil.OBJECT_CARD_PATH + card.getImage();
+			String url = PathUtil.OBJECT_CARD_PATH + st.nextToken();
+			objectCard.setName(st.nextToken());
+			objectCard.setQuestion(st.nextToken());
 			byte[] imageByteArray;
 			try {
 				InputStream imageIS = new FileInputStream(url);
@@ -118,6 +131,7 @@ public class PlayServiceImpl implements PlayService {
 		}
 
 		return objectList;
+
 	}
 
 	/** 감정 카드 놀이 -> 3장씩 카드 보내기 */
