@@ -126,9 +126,6 @@ export default {
   mounted() {
     this.joinSession();
   },
-  props: {
-    ids: Object,
-  },
   // watch: {
   //   widthOfVideo () {
   //     if (this.widthOfVideo) {
@@ -165,6 +162,10 @@ export default {
       closecamera: false,
 
       consultNo: null,
+
+      theraId: this.$store.state.accounts.userid,
+      childId: this.$store.state.accounts.childInfo.childId,
+      parentId: this.$store.state.accounts.parentInfo.parentId
     };
   },
   // watch: {
@@ -211,15 +212,15 @@ export default {
     },
 
     joinSession() {
-      axios
-        .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
-          theraId: this.ids.thera_Id,
-          childId: this.ids.child_Id,
-          parentId: this.ids.parent_Id,
-        })
-        .then((res) => {
-          this.consultNo = res.data.consultNo;
-        });
+      // axios
+      //   .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
+      //     theraId: this.ids.thera_Id,
+      //     childId: this.ids.child_Id,
+      //     parentId: this.ids.parent_Id,
+      //   })
+      //   .then((res) => {
+      //     this.consultNo = res.data.consultNo;
+      //   });
 
       //this.mySessionId = "Session_" + this.ids.child_id;
       this.mySessionId = "Session_" + "A";

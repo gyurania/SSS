@@ -58,9 +58,9 @@
             >
               <h2 class="display-2">
                 <div class="text-center mb-5">
-                  <h2>{{this.childData.name}} 님의 결과</h2>
-                  <h2>점수 : {{this.gameData.score}}</h2>
-                  <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
+                  <h2>{{this.childData.childName}} 님의 결과</h2>
+                <h2>점수 : {{this.gameData.score}}</h2>
+                <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
                 </div>
               </h2>
               <div class="row justify-content-center">
@@ -133,6 +133,12 @@ export default {
       timeStart: 0,
       timeEnd: 0,
       timeSequence: [],
+      totalTime: null,
+
+      gameData: {
+        totalTime: null,
+        score: null,
+      },
     };
   },
   methods: {
@@ -210,7 +216,7 @@ export default {
           console.log(dataSend);
           
           axios.post('https://i7a606.q.ssafy.io/service-api/play/result', dataSend)
-          
+
           this.gameSet = false;
           this.gameCountPerGame = 0;
           this.successCount = 0;

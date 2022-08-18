@@ -95,10 +95,11 @@ const OPENVIDU_SERVER_SECRET = "A606";
 export default {
   mounted () {
     this.joinSession()
+    console.log('-------------');
+    console.log(this.childId);
+    console.log('-------------');
   },
-  props: {
-    child_id: Object,
-  },
+
   components: {
     MainVideoComp,
     SubVideoComp,
@@ -152,6 +153,9 @@ export default {
 
       playingNow: false,
       endGame: false,
+
+      childId: this.$store.state.accounts.childInfo.childId,
+      childName: this.$store.state.accounts.childInfo.name,
     };
   },
   methods: {
