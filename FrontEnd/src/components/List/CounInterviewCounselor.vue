@@ -59,15 +59,13 @@ export default {
     console.log('특정아동 상담내역')
     axios({
       url: `https://i7a606.q.ssafy.io/service-api/consult/therapistcount/${this.$store.state.accounts.userid}/${this.$store.state.accounts.childInfo.childId}`,
-      // url: `https://i7a606.q.ssafy.io/service-api/consult/therapistcount/tLQDOys220805/cMJwqp1220804`,  // 확인용
       method: 'get'
     })
       .then(res => {
         this.totalRecord = res.data
         console.log(`토탈 레코드: ${res.data}`)
         axios({
-          url: `https://i7a606.q.ssafy.io/service-api/consult/thearpist/${this.$store.state.accounts.userid}/${this.$store.state.accounts.childInfo.childId}/${this.currentPage}}/${res.data}`,
-          // url: `https://i7a606.q.ssafy.io/service-api/consult/thearpist/tLQDOys220805/cMJwqp1220804/${this.currentPage}/${res.data}`,  // 확인용
+          url: `https://i7a606.q.ssafy.io/service-api/consult/thearpist/${this.$store.state.accounts.userid}/${this.$store.state.accounts.childInfo.childId}/${this.currentPage}/${res.data}`,
           method: 'get'
         })
           .then(res => {
@@ -78,8 +76,9 @@ export default {
               const time = this.items[i]["startedTime"].slice(11, 16)
               this.items[i]["date"] = date
               this.items[i]["time"] = time
-              this.items[i]["content"] = this.items[i]["record"]
+              this.items[i]["content"] = this.items[i]["memo"]
             }
+            console.log(this.items)
           })
           .catch(err => {
             console.log(err.response)
