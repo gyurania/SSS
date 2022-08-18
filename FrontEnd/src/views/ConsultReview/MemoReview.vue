@@ -21,7 +21,7 @@
           <h3><b>메모장</b></h3>
           <div class="memodata">
             <div style="display: flex; justify-content: space-between;">
-              <p>{{ memo }}</p>
+              <h3 v-html="memo"></h3>
             </div>
           </div>
         </div>
@@ -58,14 +58,11 @@
 <script>
 import axios from "axios";
 export default {
-  created() {
-    this.memo = this.$route.params.memo.replace(/\n|\r\n/g, "<br>")
-  },
   data() {
     return {
       datas: this.$route.params,
       record: this.$route.params.record,
-      memo: ''
+      memo: this.$route.params.memo
     };
   },
   methods: {
