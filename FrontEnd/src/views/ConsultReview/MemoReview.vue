@@ -12,7 +12,7 @@
         <!--서두-->
         <div class="top_naming text-left col-lg-12">
           <h3>
-            <b>{{ teacher.name }}님의 상담일지 작성</b>
+            <b>{{ datas.theraName }} 상담사의 상담일지</b>
           </h3>
         </div>
         <!--본문 시작-->
@@ -21,7 +21,7 @@
           <h3><b>메모장</b></h3>
           <div class="memodata">
             <div style="display: flex; justify-content: space-between;">
-              <p>{{ datas.memo }}</p>
+              <p>{{ memo }}</p>
             </div>
           </div>
         </div>
@@ -56,25 +56,17 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 import axios from "axios";
 export default {
   created() {
-    console.log(this.$route.params);
-  },
-  mounted() {
-    console.log(this.$route.params);
+    this.memo = this.$route.params.memo.replace(/\n|\r\n/g, "<br>")
   },
   data() {
     return {
       datas: this.$route.params,
       record: this.$route.params.record,
+      memo: ''
     };
-  },
-  computed: {
-    ...mapState({
-      teacher: (state) => state.teacher.teacher,
-    }),
   },
   methods: {
     saveRecord() {
