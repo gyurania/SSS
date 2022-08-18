@@ -40,9 +40,7 @@ ChartJS.register(
 
 export default {
   name: 'LineChart',
-  props: {
-    childId: String,
-  },
+
   mounted () {
     this.getData()
   },
@@ -50,6 +48,7 @@ export default {
     LineChartGenerator
   },
   props: {
+    childId: String,
     chartId: {
       type: String,
       default: 'line-chart'
@@ -107,6 +106,7 @@ export default {
       getData () {
         axios.get(`https://i7a606.q.ssafy.io/service-api/play/list/${this.childId}`)
         .then(res => {
+          console.log(res.data);
             this.chartData = {
                 labels: [
 

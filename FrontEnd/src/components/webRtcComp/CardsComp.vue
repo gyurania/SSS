@@ -185,14 +185,32 @@ export default {
         this.dialog1 = "false";
 
         if (this.gameCount === 5) {
-          //this.$store.state.cardGame.playingNow = false
+          let totalTimeMilSec = this.timeSequence.reduce((a,b) => a + b, 0)
+
+          let hour = parseInt(totalTimeMilSec / 3600000)
+
+          let min = parseInt((totalTimeMilSec % 3600000) / 60000)
+
+          let sec = parseInt((totalTimeMilSec % 60000) / 1000)
+          
+          this.totalTime = `${hour.toString().padStart(2, 0)}:${min.toString().padStart(2, 0)}:${sec.toString().padStart(2, 0)}`
+
+          console.log(this.totalTime);
           console.log(this.successCount);
-          axios.post("https://i7a606.q.ssafy.io/service-api/play/result", {
+          let now = new Date()
+          this.gameData.score = this.successCount
+          this.gameData.totalTime = this.totalTime
+          let dataSend = {
             score: this.successCount,
-            totalTime: totalTime,
-            childId: childId,
-            createTime: new Date(),
-          });
+            totalTime: this.totalTime,
+            childId: this.childData['childId'],
+            createTime: `${now.getFullYear().toString().padStart(2, 0)}-${(now.getMonth() + 1).toString().padStart(2, 0)}-${now.getDate().toString().padStart(2, 0)}T${now.getHours().toString().padStart(2, 0)}:${now.getMinutes().toString().padStart(2, 0)}:${now.getSeconds().toString().padStart(2, 0)}`
+          }
+          
+          console.log(dataSend);
+          
+          axios.post('https://i7a606.q.ssafy.io/service-api/play/result', dataSend)
+          
           this.gameSet = false;
           this.gameCountPerGame = 0;
           this.successCount = 0;

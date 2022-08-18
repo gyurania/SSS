@@ -48,7 +48,7 @@
           >
             <h2 class="display-2">
               <div class="text-center mb-5">
-                <h2>{{this.childData.name}} 님의 결과</h2>
+                <h2>{{this.childData.childName}} 님의 결과</h2>
                 <h2>점수 : {{this.gameData.score}}</h2>
                 <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
               </div>
@@ -98,8 +98,10 @@
 import axios from 'axios';
 export default {
   components: {},
-
-  data() {
+  mounted () {
+    console.log(this.childData);
+  },
+  data() { 
     return {
       selectedCards: [],
       loading: [false, false, false],
@@ -176,7 +178,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 5) {
+        if (this.gameCount === 1) {
           let totalTimeMilSec = this.timeSequence.reduce((a,b) => a + b, 0)
 
           let hour = parseInt(totalTimeMilSec / 3600000)
@@ -195,7 +197,7 @@ export default {
           let dataSend = {
             score: this.successCount,
             totalTime: this.totalTime,
-            childId: this.childData.childId,
+            childId: this.childData['childId'],
             createTime: `${now.getFullYear().toString().padStart(2, 0)}-${(now.getMonth() + 1).toString().padStart(2, 0)}-${now.getDate().toString().padStart(2, 0)}T${now.getHours().toString().padStart(2, 0)}:${now.getMinutes().toString().padStart(2, 0)}:${now.getSeconds().toString().padStart(2, 0)}`
           }
           
