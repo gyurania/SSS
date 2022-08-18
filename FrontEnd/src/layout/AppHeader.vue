@@ -20,7 +20,7 @@
       </div>
 
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-        <base-dropdown tag="li" class="nav-item" v-if="isLoggedIn && this.$store.state.accounts.userid.slice(0, 1) === 'p'">
+        <!-- <base-dropdown tag="li" class="nav-item" v-if="isLoggedIn && this.$store.state.accounts.userid.slice(0, 1) === 'p'">
           <a
             slot="title"
             href="#"
@@ -31,17 +31,17 @@
             <i class="ni ni-collection d-lg-none"></i>
             <span class="nav-link-inner--text"><b>치료교육</b></span>
           </a>
-          <!-- <router-link to="/counselorRecommend" class="dropdown-item"
+          <router-link to="/counselorRecommend" class="dropdown-item"
             >상담신청</router-link
           >
           <router-link to="/childReserveShow" class="dropdown-item"
             >상담일지(확인)</router-link
-          > -->
+          >
           <router-link to="/playAlone" class="dropdown-item"
             >혼자놀기</router-link
           >
-        </base-dropdown>
-        <base-dropdown tag="li" class="nav-item" v-if="isLoggedIn">
+        </base-dropdown> -->
+        <!-- <base-dropdown tag="li" class="nav-item" v-if="isLoggedIn">
           <a
             slot="title"
             href="#"
@@ -58,10 +58,10 @@
           <router-link to="/profile" class="dropdown-item"
             >내프로필</router-link
           >
-          <!-- <router-link to="/register" class="dropdown-item"
+          <router-link to="/register" class="dropdown-item"
             >회원가입</router-link
-          > -->
-        </base-dropdown>
+          >
+        </base-dropdown> -->
 
         <!--전문가는 해당 페이지만 보게함-->
         <li class="nav-link" v-if="isLoggedIn && this.$store.state.accounts.userid.slice(0, 1) === 't'">
@@ -71,11 +71,25 @@
         </li>
 
         <!-- 로그아웃 시 해당 메뉴만 보임-->
+        <li class="nav-link" v-if="isLoggedIn && this.$store.state.accounts.userid.slice(0, 1) === 'p'">
+          <router-link
+            to="/children"
+            class="nav-link-inner--text navbar p-0"
+            ><b>자녀관리</b></router-link
+          >
+        </li>
         <li class="nav-link">
           <router-link
             to="/counselorRecommend"
             class="nav-link-inner--text navbar p-0"
             ><b>상담사보기</b></router-link
+          >
+        </li>
+        <li class="nav-link" v-if="isLoggedIn && this.$store.state.accounts.userid.slice(0, 1) === 'p'">
+          <router-link
+            to="/profile"
+            class="nav-link-inner--text navbar p-0"
+            ><b>내프로필</b></router-link
           >
         </li>
         <li class="nav-link" v-if="!isLoggedIn">

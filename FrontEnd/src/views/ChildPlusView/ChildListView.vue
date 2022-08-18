@@ -102,11 +102,18 @@
                     </div>
                     <!-- </router-link> -->
 
-                    <router-link to="/survey" class="col-sm-6 px-0">
-                      <base-button outline type="secondary" class="childbutton">
+                    <div class="col-sm-6 px-0">
+                      <base-button outline type="secondary" class="childbutton" @click="movePlay(i)">
+                        혼자 놀기
+                      </base-button>
+                    </div>
+
+                    <div class="col-sm-6 px-0">
+                      <base-button outline type="secondary" class="childbutton" @click="moveChart(i)">
                         놀이 기록
                       </base-button>
-                    </router-link>
+                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -264,6 +271,18 @@ export default {
         params: this.children[index],
       });
       this.$store.state.accounts.childInfo = this.children[index]
+    },
+    movePlay(index) {
+      this.$router.push({
+        name: "playAlone",
+        params: this.children[index].childId,
+      });
+    },
+    moveChart(index) {
+      this.$router.push({
+        name: "chart",
+        params: this.children[index].childId,
+      });
     },
   },
   created() {
