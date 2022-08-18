@@ -275,13 +275,19 @@ export default {
     movePlay(index) {
       this.$router.push({
         name: "playAlone",
-        params: this.children[index].childId,
+        params: {
+          childId: this.children[index].childId,
+          childName: this.children[index].name
+        },
       });
     },
     moveChart(index) {
       this.$router.push({
         name: "chart",
-        params: this.children[index].childId,
+        params: {
+          childId: this.children[index].childId,
+          childName: this.children[index].name
+        },
       });
     },
   },
