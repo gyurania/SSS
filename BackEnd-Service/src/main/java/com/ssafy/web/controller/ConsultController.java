@@ -37,7 +37,9 @@ public class ConsultController {
 			@CacheEvict(value="consultTherapist", allEntries=true),
 			@CacheEvict(value="consultTherapistAndChildId", allEntries=true),
 			@CacheEvict(value="consultParentAndChildId", allEntries=true),
-			@CacheEvict(value="consultParent", allEntries=true)
+			@CacheEvict(value="consultParent", allEntries=true),
+			@CacheEvict(value="consultTherapistByChildCount", allEntries=true),
+			@CacheEvict(value="consultParentByChildCount", allEntries=true)
 	})
 	/*메모 수정*/
 	@PutMapping("/memo")
@@ -50,7 +52,9 @@ public class ConsultController {
 			@CacheEvict(value="consultTherapist", allEntries=true),
 			@CacheEvict(value="consultTherapistAndChildId", allEntries=true),
 			@CacheEvict(value="consultParentAndChildId", allEntries=true),
-			@CacheEvict(value="consultParent", allEntries=true)
+			@CacheEvict(value="consultParent", allEntries=true),
+			@CacheEvict(value="consultTherapistByChildCount", allEntries=true),
+			@CacheEvict(value="consultParentByChildCount", allEntries=true)
 	})
 	/*일지 수정*/
 	@PutMapping("/record")
