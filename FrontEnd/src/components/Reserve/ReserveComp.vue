@@ -25,8 +25,9 @@
                     :config="{ allowInput: true, inline: true, locale: ko }"
                     class="datepicker col-md-12"
                     v-model="date"
+                    :allowed-dates="disablePastDates"
                   >
-                  </flat-picker>`4`
+                  </flat-picker>
                 </base-input>
               </div>
               <!--시간 선택-->
@@ -157,6 +158,9 @@ export default {
       })
   },
   methods: {
+    disablePastDates(val) {
+      return val >= new Date().tolSOString().substr(0, 10)
+    },
     dateSelected() {
       console.log(this.date);
       this.possibleTimes = []

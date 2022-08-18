@@ -16,6 +16,7 @@ import ChildReserveShowCounselor from "./views/ReserveView/ChildReserveShowCouns
 import CounSchedule from "./views/ReserveView/ConsultationSchedule.vue";
 //상담 후기 작성
 import CounReview from "./views/ConsultReview/MemoReview.vue";
+import ConsultReview from "./views/ConsultReview/ConsultReview.vue";
 //아동추가 목록
 import ChildListView from "./views/ChildPlusView/ChildListView.vue";
 //문진표
@@ -145,6 +146,14 @@ export default new Router({
       components: {
         header: AppHeader,
         default: CounReview,
+      },
+    },
+    {
+      path: "/ConsultReview",
+      name: "ConsultReview",
+      components: {
+        header: AppHeader,
+        default: ConsultReview,
       },
     },
     //상담사 예약 일정
