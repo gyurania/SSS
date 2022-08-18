@@ -238,9 +238,19 @@ export default {
         .post(`${this.$store.state.host}/service-api/mail`, {
           email: this.email,
         })
-        .then((res) => {
-          this.emailCode2 = res.data;
-        });
+          .then((res) => {
+            console.log(res.data)
+            if (res.data === 'fail') {
+              alert("이미 사용된 이메일 입니다.")
+              this.email = ''
+            } else {
+              alert("해당 이메일로 메시지를 보냈습니다.")
+              this.emailCode2 = res.data;
+            }
+          })
+          .catch(err => {
+            console.log(err.response)
+          })
     },
     checkEamilCode() {
       if (this.emailCode1 === this.emailCode2) {

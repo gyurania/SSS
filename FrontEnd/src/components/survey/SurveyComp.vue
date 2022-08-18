@@ -28,8 +28,9 @@
                     <div class="row mx-3">
                       <p class="lead">
                         <input
+                          style="cursor:pointer"
                           type="radio"
-                          id="radio"
+                          :id="question.object_answers[j]"
                           v-model="answer[i]"
                           :value="{
                             'options': object_answer[0],
@@ -39,8 +40,8 @@
                         <label for="radio" class="score">
                           {{ object_answer[1] }}</label
                         >
+                      <label class="lead" :for="question.object_answers[j]" style="cursor:pointer">{{ object_answer[0] }}</label>
                       </p>
-                      <label class="lead">{{ object_answer[0] }}</label>
                     </div>
                   </div>
                 </div>

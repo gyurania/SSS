@@ -4,6 +4,7 @@
       <img
         :src="`data:image/png;base64,${counselor['profile_url']}`"
         class="rounded-circle img-fluid shadow-lg"
+        style="width: 200px; height: 200px"
       >
       <div class="card_about text-center">
         <h5 class="pt-2">
