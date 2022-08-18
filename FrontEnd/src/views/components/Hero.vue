@@ -85,7 +85,7 @@ export default {};
   }
 } */
 .titleImg {
-  margin: 10px 0;
+  margin: 80px 0;
   position: absolute;
 }
 .titleImg > img {
@@ -116,6 +116,7 @@ export default {};
   }
   .titleImg {
     margin: 0;
+    position: relative;
   }
   #sun > img {
     width: 30%;

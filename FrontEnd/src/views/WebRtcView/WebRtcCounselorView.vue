@@ -60,14 +60,14 @@
         <div
           class="col-md-12 row RtcFunction justify-content-center m-0 p-0 align-items-center"
         >
-          <base-button
+          <!-- <base-button
             data-toggle="modal"
             data-target="#exampleModal"
             type="success"
             @click="ShowCardGame"
             class="col-sm-2 align-self-center"
             >카드게임</base-button
-          >
+          > -->
 
           <!-- <base-button type="success" class="col-md-1 align-self-center"
             >피아노게임</base-button
@@ -126,9 +126,6 @@ export default {
   mounted() {
     this.joinSession();
   },
-  props: {
-    ids: Object,
-  },
   // watch: {
   //   widthOfVideo () {
   //     if (this.widthOfVideo) {
@@ -165,6 +162,10 @@ export default {
       closecamera: false,
 
       consultNo: null,
+
+      theraId: this.$store.state.accounts.userid,
+      childId: this.$store.state.accounts.childInfo.childId,
+      parentId: this.$store.state.accounts.parentInfo.parentId
     };
   },
   // watch: {
@@ -202,8 +203,8 @@ export default {
       axios
         .get(
           `https://i7a606.q.ssafy.io/service-api/consult/therapistcount/${
-            this.ids.thera_Id
-          }/${this.ids.child_Id}`
+            this.theraId
+          }/${this.childId}`
         )
         .then((res) => {
           return res.data;
@@ -211,21 +212,22 @@ export default {
     },
 
     joinSession() {
-      /*       axios
+      console.log(`${this.theraId} ${this.childId} ${this.parentId}`)
+      axios
         .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
-          theraId: this.ids.thera_Id,
-          childId: this.ids.child_Id,
-          parentId: this.ids.parent_Id,
+          theraId: this.theraId,
+          childId: this.childId,
+          parentId: this.parentId
         })
         .then((res) => {
-          this.consultNo = res.data.consultNo;
-        }); */
+          this.consultNo = res.data
+        });
 
-      //this.mySessionId = "Session_" + this.ids.child_id;
-      this.mySessionId = "Session_" + "A";
+      this.mySessionId = "Session_" + this.childId;
+      // this.mySessionId = "Session_" + "A";
 
-      //this.myUserName = this.ids.thera_id;
-      this.myUserName = "A";
+      this.myUserName = this.theraId;
+      // this.myUserName = "A";
 
       this.OV = new OpenVidu();
 
@@ -303,7 +305,16 @@ export default {
       axios.put("https://i7a606.q.ssafy.io/service-api/consult/memo", {
         consultNo: this.consultNo,
         memo: this.$store.state.memos.list.toString(),
-      });
+      })
+      .then(res => {
+        this.$store.state.memos.list = []
+        console.log(res);
+        console.log('success');
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
       if (this.session) this.session.disconnect();
 
       this.session = undefined;
@@ -313,15 +324,8 @@ export default {
       this.OV = undefined;
 
       window.removeEventListener("beforeunload", this.leaveSession);
-      this.$router.push({
-        name: "childReserveShowCounselor",
-        params: {
-          reservTime: datetime,
-          childId: String,
-          childName: String,
-          parentName: String,
-        },
-      });
+
+      this.$router.push({name: 'childReserveShowCounselor'})
     },
 
     updateMainVideoStreamManager(stream) {

@@ -1,12 +1,5 @@
 <template>
   <div id="webCam">
-    <div id="join" v-if="!session">
-      <p class="text-center">
-        <button class="btn btn-lg btn-success" @click="joinSession()">
-          Join!
-        </button>
-      </p>
-    </div>
 
     <div class="container" v-if="session">
       <div class="wrap_content row col-md-12 p-4 m-0 justify-content-around">
@@ -29,7 +22,7 @@
         <!--학생 얼굴 들어갈 자리 end-->
 
         <div id="cardGameDiv" v-if="playingNow">
-          <cards-comp></cards-comp>
+          <cards-comp :childId="this.childId"></cards-comp>
         </div>
 
         <div
@@ -100,9 +93,13 @@ const OPENVIDU_SERVER_URL = "https://i7a606.q.ssafy.io:8443";
 const OPENVIDU_SERVER_SECRET = "A606";
 
 export default {
-  props: {
-    child_id: String,
+  mounted () {
+    this.joinSession()
+    console.log('-------------');
+    console.log(this.childId);
+    console.log('-------------');
   },
+
   components: {
     MainVideoComp,
     SubVideoComp,
@@ -156,6 +153,9 @@ export default {
 
       playingNow: false,
       endGame: false,
+
+      childId: this.$store.state.accounts.childInfo.childId,
+      childName: this.$store.state.accounts.childInfo.name,
     };
   },
   methods: {
@@ -202,10 +202,10 @@ export default {
       this.isFaceShow = !this.isFaceShow;
     },
     joinSession() {
-      //this.mySessionId = "Session_" + this.child_id;
-      this.mySessionId = "Session_" + "A";
-      //this.myUserName = this.child_id;
-      this.myUserName = "B";
+      this.mySessionId = "Session_" + this.childId;
+      // this.mySessionId = "Session_" + "A";
+      this.myUserName = this.childId;
+      // this.myUserName = "B";
 
       console.log("----------------");
       console.log(this.mySessionId);

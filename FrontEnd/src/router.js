@@ -38,6 +38,9 @@ import update from "./views/UserInfoView/UserUpdateForm.vue";
 import video from "./components/subMain/subMain.vue";
 Vue.use(Router);
 
+//chart
+import chart from "./views/chartView/chartView"
+
 export default new Router({
   mode: "history",
   linkExactActiveClass: "active",
@@ -223,6 +226,13 @@ export default new Router({
         default: memo,
       },
     },
+    
+    //차트
+    {
+      path: "/chart",
+      name: "chart",
+      component: chart
+    }
   ],
   scrollBehavior: (to) => {
     if (to.hash) {

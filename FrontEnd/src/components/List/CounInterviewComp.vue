@@ -47,7 +47,7 @@ export default {
           soratable: true,
         },
         {
-          key: "content",
+          key: "record",
           label: "상담일지",
           soratable: false,
         },
@@ -63,16 +63,14 @@ export default {
   created() {
     console.log("특정아동 상담내역");
     axios({
-      url: `https://i7a606.q.ssafy.io/service-api/parentcount/${this.$store.state.accounts.userid}/${this.$route.params.childId}`,
-      // url: `https://i7a606.q.ssafy.io/service-api/consult/therapistcount/tLQDOys220805/cMJwqp1220804`,  // 확인용
+      url: `https://i7a606.q.ssafy.io/service-api/consult/parentcount/${this.$store.state.accounts.userid}/${this.$store.state.accounts.childInfo.childId}`,
       method: 'get'
     })
       .then(res => {
         this.totalRecord = res.data
         console.log(`토탈 레코드: ${res.data}`)
         axios({
-          url: `https://i7a606.q.ssafy.io/service-api/consult/parent/${this.$store.state.accounts.userid}/${this.$route.params.childId}/${this.currentPage}}/${res.data}`,
-          // url: `https://i7a606.q.ssafy.io/service-api/consult/thearpist/tLQDOys220805/cMJwqp1220804/${this.currentPage}/${res.data}`,  // 확인용
+          url: `https://i7a606.q.ssafy.io/service-api/consult/parent/${this.$store.state.accounts.userid}/${this.$store.state.accounts.childInfo.childId}/${this.currentPage}/${res.data}`,
           method: 'get'
         })
           .then(res => {
@@ -83,7 +81,6 @@ export default {
               const time = this.items[i]["startedTime"].slice(11, 16)
               this.items[i]["date"] = date
               this.items[i]["time"] = time
-              this.items[i]["content"] = this.items[i]["record"]
             }
             console.log(this.items)
           })

@@ -29,9 +29,9 @@
     <div class="col-sm-12 text-right col">
       <base-button type="primary" class="col-sm-2" @click="moveSurveyResult">문진표</base-button>
       <!--학생일 시 student-->
-      <router-link to="/webStudent" :child_id="childInfo['childId']" class="col-sm-2">
+      <!-- <router-link to="/webStudent" :child_id="{childId: childInfo['childId'], childName: childInfo['name']}" class="col-sm-2">
         <base-button type="primary">상담방</base-button>
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
@@ -42,7 +42,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      childInfo: this.$route.params,
+      childInfo: this.$store.state.accounts.childInfo,
       parentInfo: {}
     };
   },
@@ -57,7 +57,7 @@ export default {
   },
   created() {
     console.log("상담일지 정보창")
-    console.log(this.$route.params)
+    console.log(this.$store.state.accounts.childInfo)
     axios({
       url: `https://i7a606.q.ssafy.io/service-api/user/${this.$store.state.accounts.userid}`,
       method: 'get',

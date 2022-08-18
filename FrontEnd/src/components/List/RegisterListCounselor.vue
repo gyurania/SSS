@@ -8,7 +8,10 @@
       :current-page="currentPage"
       small
       :fields="fields"
-    ></b-table>
+    >
+    <template v-slot:cell(button)="{ item }">
+      <span><b-btn @click="moveConsultingRoom(item)">상담방</b-btn></span>
+    </template></b-table>
     <b-pagination
       v-model="currentPage"
       :total-rows="rows"
@@ -46,6 +49,11 @@ export default {
           label: "아이",
           soratable: true,
         },
+        {
+          key: "button",
+          label: "입장하기",
+          soratable: true,
+        },
       ],
     };
   },
@@ -54,10 +62,16 @@ export default {
       return this.items.length;
     },
   },
+  methods: {
+    moveConsultingRoom(i) {
+      // console.log(i)
+      this.$router.push({ name: 'webCounselor' })
+    }
+  },
   created() {
     console.log('특정아동 예약날짜')
     this.$axios({
-      url: `https://i7a606.q.ssafy.io/service-api/reserv-therapist/child/${this.$store.state.accounts.userid}/${this.$route.params.childId}`,
+      url: `https://i7a606.q.ssafy.io/service-api/reserv-therapist/child/${this.$store.state.accounts.userid}/${this.$store.state.accounts.childInfo.childId}`,
       method: 'get'
     })
       .then(res => {
