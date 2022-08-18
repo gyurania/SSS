@@ -1,12 +1,5 @@
 <template>
   <div id="webCam">
-    <div id="join" v-if="!session">
-      <p class="text-center">
-        <button class="btn btn-lg btn-success" @click="joinSession()">
-          Join!
-        </button>
-      </p>
-    </div>
 
     <div class="container" v-if="session">
       <div class="wrap_content row col-md-12 p-4 m-0 justify-content-around">
@@ -100,6 +93,9 @@ const OPENVIDU_SERVER_URL = "https://i7a606.q.ssafy.io:8443";
 const OPENVIDU_SERVER_SECRET = "A606";
 
 export default {
+  mounted () {
+    joinSession()
+  },
   props: {
     child_id: String,
   },
