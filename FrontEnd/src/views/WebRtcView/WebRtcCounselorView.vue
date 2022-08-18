@@ -212,21 +212,21 @@ export default {
     },
 
     joinSession() {
-      // axios
-      //   .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
-      //     theraId: this.ids.thera_Id,
-      //     childId: this.ids.child_Id,
-      //     parentId: this.ids.parent_Id,
-      //   })
-      //   .then((res) => {
-      //     this.consultNo = res.data.consultNo;
-      //   });
+      axios
+        .post("https://i7a606.q.ssafy.io/service-api/consult/room", {
+          theraId: this.ids.thera_Id,
+          childId: this.ids.child_Id,
+          parentId: this.ids.parent_Id,
+        })
+        .then((res) => {
+          this.consultNo = res.data.consultNo;
+        });
 
-      //this.mySessionId = "Session_" + this.ids.child_id;
-      this.mySessionId = "Session_" + "A";
+      this.mySessionId = "Session_" + this.ids.child_id;
+      // this.mySessionId = "Session_" + "A";
 
-      //this.myUserName = this.ids.thera_id;
-      this.myUserName = "A";
+      this.myUserName = this.ids.thera_id;
+      // this.myUserName = "A";
 
       this.OV = new OpenVidu();
 
@@ -304,7 +304,10 @@ export default {
       axios.put("https://i7a606.q.ssafy.io/service-api/consult/memo", {
         consultNo: this.consultNo,
         memo: this.$store.state.memos.list.toString(),
-      });
+      })
+      .then(res => {
+        console.log(res);
+      })
       if (this.session) this.session.disconnect();
 
       this.session = undefined;

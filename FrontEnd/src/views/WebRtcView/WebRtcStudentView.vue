@@ -22,7 +22,7 @@
         <!--학생 얼굴 들어갈 자리 end-->
 
         <div id="cardGameDiv" v-if="playingNow">
-          <cards-comp :childId="this.child_Id.childId"></cards-comp>
+          <cards-comp :childId="this.childId"></cards-comp>
         </div>
 
         <div
@@ -202,10 +202,10 @@ export default {
       this.isFaceShow = !this.isFaceShow;
     },
     joinSession() {
-      //this.mySessionId = "Session_" + this.child_id;
-      this.mySessionId = "Session_" + "A";
-      //this.myUserName = this.child_id;
-      this.myUserName = "B";
+      this.mySessionId = "Session_" + this.child_id;
+      // this.mySessionId = "Session_" + "A";
+      this.myUserName = this.child_id;
+      // this.myUserName = "B";
 
       console.log("----------------");
       console.log(this.mySessionId);
