@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="backgroundDiv">
 
     <div id="titleDiv">
       <h1>{{this.childData.childName}} 님의 게임 기록</h1>
@@ -55,5 +55,9 @@ export default {
   margin-top: 5%;
   display: flex;
   justify-content: center;
+}
+
+body{
+  background: linear-gradient(150deg, #fdffbc 15%, #ffeebb 70%, #ffdcb8 94%);
 }
 </style>

@@ -51,6 +51,9 @@
 import { mapState, mapMutations } from "vuex";
 import axios from 'axios'
 export default {
+  created () {
+    console.log(this.$route.params);
+  },
   mounted () {
     console.log(this.$route.params);
   },

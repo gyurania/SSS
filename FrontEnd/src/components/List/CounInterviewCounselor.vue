@@ -107,7 +107,7 @@ export default {
   methods: {
     counReview(item) {
       // console.log(item["memo"])
-      this.$router.push({ name: "counReview", params: { memo: item["memo"], consultNo: item["consultNo"]}, record: item["record"] });
+      this.$router.push({ name: "counReview", params: { memo: item["memo"], consultNo: item["consultNo"], record: item["record"] }});
     },
     // async getItems(item) {
     //   console.log(this.currentPage)
