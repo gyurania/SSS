@@ -29,9 +29,9 @@
     <div class="col-sm-12 text-right col">
       <base-button type="primary" class="col-sm-2" @click="moveSurveyResult">문진표</base-button>
       <!--학생일 시 student-->
-      <router-link to="/webStudent" :child_id="{childId: childInfo['childId'], childName: childInfo['name']}" class="col-sm-2">
+      <!-- <router-link to="/webStudent" :child_id="{childId: childInfo['childId'], childName: childInfo['name']}" class="col-sm-2">
         <base-button type="primary">상담방</base-button>
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
