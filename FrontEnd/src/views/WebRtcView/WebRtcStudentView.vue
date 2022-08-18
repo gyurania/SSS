@@ -202,9 +202,9 @@ export default {
       this.isFaceShow = !this.isFaceShow;
     },
     joinSession() {
-      this.mySessionId = "Session_" + this.child_id;
+      this.mySessionId = "Session_" + this.childId;
       // this.mySessionId = "Session_" + "A";
-      this.myUserName = this.child_id;
+      this.myUserName = this.childId;
       // this.myUserName = "B";
 
       console.log("----------------");

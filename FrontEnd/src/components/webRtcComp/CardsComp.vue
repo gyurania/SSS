@@ -59,7 +59,7 @@
               <h2 class="display-2">
                 <div class="text-center mb-5">
 
-                  <h2>{{this.childData.childName}} 님의 결과</h2>
+                  <h2>{{this.childName}} 님의 결과</h2>
                 <h2>점수 : {{this.gameData.score}}</h2>
                 <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
 
@@ -115,9 +115,7 @@
 <script>
 export default {
   components: {},
-  props: {
-    childId: String,
-  },
+
   data() {
     return {
       selectedCards: [],
@@ -141,6 +139,9 @@ export default {
         totalTime: null,
         score: null,
       },
+
+      childId: this.$store.state.accounts.childInfo.childId,
+      childName: this.$store.state.accounts.childInfo.name,
     };
   },
   methods: {
@@ -215,7 +216,7 @@ export default {
           let dataSend = {
             score: this.successCount,
             totalTime: this.totalTime,
-            childId: this.childData["childId"],
+            childId: this.childId,
             createTime: `${now
               .getFullYear()
               .toString()
