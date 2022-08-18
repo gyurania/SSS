@@ -129,7 +129,6 @@
                             'options': object_answer[0],
                             'score': object_answer[1]
                           }"
-                          @change="qwer(j)"
                         />
                         <label for="radio" class="score">
                           {{ object_answer[1] }}</label
@@ -169,20 +168,7 @@ export default {
     };
   },
   methods: {
-    qwer(index) {
-      console.log(index)
-    },
-    asas(index) {
-      if (index === 1) {
-        console.log(1)
-        return "checked"
-      } else {
-        console.log(0)
-        return false
-      }
-    },
     onSubmit() {
-      console.log(this.answer)
       const newAnswer = this.answer.filter((x, i) => x != null)
       if (newAnswer.length === 23) {
         // for (let i = 0; i < 23; i++) {
