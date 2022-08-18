@@ -193,6 +193,7 @@ export default {
         alert("Fill in the blank!");
         return;
       }
+      alert('메모가 저장되었습니다!')
       const memo = this.newMemo.replace(/\n|\r\n/g, "<br>");
       this.ADD_MEMO(memo);
       this.newMemo = "";
@@ -322,7 +323,7 @@ export default {
       this.publisher = undefined;
       this.subscribers = [];
       this.OV = undefined;
-
+      this.session.unpublish();
       window.removeEventListener("beforeunload", this.leaveSession);
 
       this.$router.push({name: 'childReserveShowCounselor'})
