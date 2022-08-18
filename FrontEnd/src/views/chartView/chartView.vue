@@ -51,7 +51,7 @@ export default {
 
 #chartDiv {
   margin-top: 10%;
-  width: 50%;
+  width: 90%;
   height: 50%;
 }
 
