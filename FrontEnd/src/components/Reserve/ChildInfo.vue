@@ -42,7 +42,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      childInfo: this.$route.params,
+      childInfo: this.$store.state.accounts.childInfo,
       parentInfo: {}
     };
   },
@@ -57,7 +57,7 @@ export default {
   },
   created() {
     console.log("상담일지 정보창")
-    console.log(this.$route.params)
+    console.log(this.$store.state.accounts.childInfo)
     axios({
       url: `https://i7a606.q.ssafy.io/service-api/user/${this.$store.state.accounts.userid}`,
       method: 'get',

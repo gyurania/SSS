@@ -12,16 +12,13 @@
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img v-lazy="'img/theme/team-4-800x800.jpg'" class="rounded-circle">
+                                      <div v-if="this.$store.state.accounts.userid.slice(0, 1) === 't'">
+                                        <img
+                                          :src="`data:image/png;base64,${userInfo['profile_url']}`"
+                                          class="rounded-circle img-fluid shadow-lg"
+                                        >
+                                      </div>
                                     </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                                <div class="card-profile-actions py-4 mt-lg-0">
-                                  <router-link to="/update">
-                                    <base-button type="info" size="sm" class="mr-4">회원정보 수정</base-button>
-                                  </router-link>
-                                    <base-button type="default" size="sm" class="float-right">회원 탈퇴</base-button>
                                 </div>
                             </div>
                             <!-- <div class="col-lg-4 order-lg-1">
@@ -43,25 +40,42 @@
                         </div>
                         <div class="text-center mt-5">
                             <h3>
-                              {{ userInfo["parentInfo"]["name"] }}
+                              {{ userInfo["name"] }}
                                 <span class="font-weight-light"></span>
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>
-                              {{ userInfo["parentInfo"]["email"] }}</div>
+                              {{ userInfo["email"] }}</div>
                             <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>
-                              {{ userInfo["parentInfo"]["phone"] }}</div>
+                              {{ userInfo["phone"] }}</div>
                             <div><i class="ni education_hat mr-2"></i>
-                              {{ userInfo["parentInfo"]["address"] }}</div>
+                              {{ userInfo["address"] }}</div>
                         </div>
-                        <div class="mt-5 py-5 border-top text-center">
+                        <div class="mt-5 py-5 border-top text-center" v-if="this.$store.state.accounts.userid.slice(0, 1) === 't'">
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
-                                    <p>자기소개</p>
+                                    <div><i class="ni education_hat mr-2"></i>
+                                      {{ userInfo["expertises"] }}</div>
+                                    <div><i class="ni education_hat mr-2"></i>
+                                      {{ userInfo["academy"] }}</div>
+                                    <div><i class="ni education_hat mr-2"></i>
+                                      {{ userInfo["careers"] }}</div>
+                                    <div><i class="ni education_hat mr-2"></i>
+                                      {{ userInfo["licence"] }}</div>
+                                    <div><i class="ni education_hat mr-2"></i>
+                                      {{ userInfo["thera_intro"] }}</div>
                                     <a href="#">Show more</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                  <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                      <div class="card-profile-actions py-4 mt-lg-0">
+                        <router-link to="/update">
+                          <base-button type="info" size="sm" class="mr-4">회원정보 수정</base-button>
+                        </router-link>
+                          <!-- <base-button type="default" size="sm" class="float-right">회원 탈퇴</base-button> -->
+                      </div>
+                  </div>
                 </card>
             </div>
         </section>
@@ -86,11 +100,12 @@ export default {
     })
       .then((res) => {
         if (this.$store.state.accounts.userid.slice(0, 1) === 't') {
+          console.log("상담사")
           console.log(res.data.theraInfo)
           this.userInfo = res.data.theraInfo
         } else {
-          console.log(res.data)
-          this.userInfo = res.data
+          console.log(res.data.parentInfo)
+          this.userInfo = res.data.parentInfo
         }
       })
       .catch(err => {
