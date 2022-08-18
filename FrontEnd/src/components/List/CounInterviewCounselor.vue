@@ -73,7 +73,7 @@ export default {
             for (let i = 0; i < this.items.length; i++) {
               this.items[i]["NO"] = i + 1
               const date = this.items[i]["startedTime"].slice(0, 10)
-              const time = this.items[i]["startedTime"].slice(11, 16)
+              const time = `${Number(this.items[i]["startedTime"].slice(11, 13)) + 9} 시`
               this.items[i]["date"] = date
               this.items[i]["time"] = time
             }

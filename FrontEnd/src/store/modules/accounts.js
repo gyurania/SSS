@@ -76,7 +76,7 @@ export default {
           router.push({ name: "components" });
         })
         .catch((err) => {
-          alert("아이디/비밀번호가 일치하지 않습니다.")
+          router.push({ name: "components" });
           console.log(err.response);
           commit("SET_AUTH_ERROR", err.response.data);
         });
