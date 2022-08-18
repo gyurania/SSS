@@ -21,10 +21,9 @@
             <b>{{ this.solution }}</b>
           </div>
           <!--카드 이름 나오는 곳 (1단계)-->
-
           <div
             class="justify-content-center align-items-center my-5 py-5"
-            v-if="!this.gameSet"
+            v-if="!this.gameSet && this.gameData.score === null "
           >
             <h2 class="display-2">
               <div class="text-center mb-5">
@@ -39,6 +38,29 @@
                 @click="createCards"
               >
                 게임시작하기
+              </base-button>
+            </div>
+          </div>
+
+          <div
+            class="justify-content-center align-items-center my-5 py-5"
+            v-if="!this.gameSet && this.gameData.score !== null "
+          >
+            <h2 class="display-2">
+              <div class="text-center mb-5">
+                <h2>{{this.childData.name}} 님의 결과</h2>
+                <h2>점수 : {{this.gameData.score}}</h2>
+                <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
+              </div>
+            </h2>
+            <div class="row justify-content-center">
+              <base-button
+                class="col-3 start_btn"
+                id="startGameBtn"
+                v-if="!this.gameSet"
+                @click="createCards"
+              >
+                게임다시하기
               </base-button>
             </div>
           </div>
@@ -95,6 +117,14 @@ export default {
       timeEnd: 0,
       timeSequence: [],
       totalTime: null,
+
+      gameData: {
+        totalTime: null,
+        score: null,
+      },
+
+      childData: this.$route.params
+
     };
   },
   methods: {
@@ -146,7 +176,7 @@ export default {
         }
         this.dialog1 = "false";
 
-        if (this.gameCount === 5) {
+        if (this.gameCount === 1) {
           let totalTimeMilSec = this.timeSequence.reduce((a,b) => a + b, 0)
 
           let hour = parseInt(totalTimeMilSec / 3600000)
@@ -160,11 +190,12 @@ export default {
           console.log(this.totalTime);
           console.log(this.successCount);
           let now = new Date()
-
+          this.gameData.score = this.successCount
+          this.gameData.totalTime = this.totalTime
           let dataSend = {
             score: this.successCount,
             totalTime: this.totalTime,
-            childId: 'childId',
+            childId: this.childData.childId,
             createTime: `${now.getFullYear().toString().padStart(2, 0)}-${(now.getMonth() + 1).toString().padStart(2, 0)}-${now.getDate().toString().padStart(2, 0)}T${now.getHours().toString().padStart(2, 0)}:${now.getMinutes().toString().padStart(2, 0)}:${now.getSeconds().toString().padStart(2, 0)}`
           }
           

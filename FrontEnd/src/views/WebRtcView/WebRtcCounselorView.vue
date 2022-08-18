@@ -60,14 +60,14 @@
         <div
           class="col-md-12 row RtcFunction justify-content-center m-0 p-0 align-items-center"
         >
-          <base-button
+          <!-- <base-button
             data-toggle="modal"
             data-target="#exampleModal"
             type="success"
             @click="ShowCardGame"
             class="col-sm-2 align-self-center"
             >카드게임</base-button
-          >
+          > -->
 
           <!-- <base-button type="success" class="col-md-1 align-self-center"
             >피아노게임</base-button
@@ -314,7 +314,7 @@ export default {
 
       window.removeEventListener("beforeunload", this.leaveSession);
 
-      this.$router.push('/')
+      this.$router.push({name: 'childReserveShowCounselor'})
     },
 
     updateMainVideoStreamManager(stream) {

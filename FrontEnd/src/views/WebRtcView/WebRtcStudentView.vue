@@ -22,7 +22,7 @@
         <!--학생 얼굴 들어갈 자리 end-->
 
         <div id="cardGameDiv" v-if="playingNow">
-          <cards-comp :childId="this.child_Id"></cards-comp>
+          <cards-comp :childId="this.child_Id.childId"></cards-comp>
         </div>
 
         <div
@@ -94,10 +94,10 @@ const OPENVIDU_SERVER_SECRET = "A606";
 
 export default {
   mounted () {
-    joinSession()
+    this.joinSession()
   },
   props: {
-    child_id: String,
+    child_id: Object,
   },
   components: {
     MainVideoComp,
