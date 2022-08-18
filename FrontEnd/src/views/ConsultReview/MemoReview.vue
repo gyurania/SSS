@@ -109,6 +109,7 @@ export default {
   position: absolute;
 }
 .memoReview > h3 {
+  position: relative;
   padding: 40px 30px;
 }
 
@@ -117,6 +118,7 @@ export default {
   position: absolute;
 }
 .CounWrite > h3 {
+  position: relative;
   padding: 40px 30px;
 }
 .memodata {
