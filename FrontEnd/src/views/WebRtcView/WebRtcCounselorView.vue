@@ -307,8 +307,14 @@ export default {
         memo: this.$store.state.memos.list.toString(),
       })
       .then(res => {
+        this.$store.state.memos.list = []
         console.log(res);
+        console.log('success');
       })
+      .catch((error) => {
+        console.log(error);
+      })
+
       if (this.session) this.session.disconnect();
 
       this.session = undefined;
