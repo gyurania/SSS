@@ -1,0 +1,202 @@
+-- Object card, feeling_card, question, expertise 그대로 사용 
+
+--  user
+INSERT  INTO sss_auth.user  
+values
+('p0SAddT220804', 'parent001', '$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null,  default),
+('p3IsNnN220804','parent002','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('p9wj92M220803','parent003','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('pcdHKGY220804','parent004','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('pDj2dJd220805','parent005','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tLQDOys220805','therapist001','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('to46qFg220805','therapist002','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('toqyD0t220805','therapist003','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tQ33VQz220805','therapist004','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tsCvksB220804','therapist005','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tlAN5Qf220805','therapist006','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI220804','therapist007','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2a0804','therapist008','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2b0804','therapist009','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2c0804','therapist010','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2d0804','therapist011','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2e0804','therapist012','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2f0804','therapist013','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2g0804','therapist014','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2h0804','therapist015','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2i0804','therapist016','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2j0804','therapist017','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2k0804','therapist018','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2l0804','therapist019','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tvSV0xI2n0804','therapist020','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default),
+('tWYjC7k2m0804','therapist021','$2a$10$8XFG9jG4dtHwseg/liZFreGGm1GCL4E1paqm3r1UaAxZ1jcHdrf/u',null, default);
+
+
+--  parent 
+insert into sss_auth.parent(name, phone, email, address, parent_id)
+values
+('추나라빛','010-7845-5655','chuna78@gmail.com','전라남도 무안군 삼향읍 오룡길 4','p0SAddT220804'),
+('조소리','010-4468-1112','josori11@gmail.com','충청남도 홍성군 홍북읍 충남대로 19','p3IsNnN220804'),
+('남보람','010-2048-3653','borami@naver.com','강원도 춘천시 중앙로 10','p9wj92M220803'),
+('탁가람','010-8787-5846','garam77@naver.com','부산광역시 중구 자갈치로 232','pcdHKGY220804'),
+('남궁호','010-4562-4532','hohoho10@gmail.com','대구광역시 중구 달구벅대로 2966','pDj2dJd220805');
+
+
+--  therapist
+INSERT INTO sss_auth.therapist(address, email,name, phone, profile_url, thera_intro, thera_id, academic_careers, careers, licences)
+values
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist001@gmail.com', '권혜수', '010-4562-1254', '3DDD.png', '자기소개', 'tLQDOys220805', '[경희대학교,생체의공학과,2010,2014]=[서울대학교,의과연구석사,2017,2022]', '[아이함께센터,부원장,2017-8,부원장]', '[임상심리사 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist002@gmail.com', '윤광환', '010-8623-1356', '3DDD-1.png', '자기소개', 'to46qFg220805', '[홍익대학교,생물과학과,2009,2013]=[서울대학교,의과연구석사,2015,2020]', '[아이함께센터,대리,2017-8,임상연구원]', '[보육교사 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist003@gmail.com', '추민용', '010-1001-3152', '3DDD-2.png', '자기소개', 'toqyD0t220805', '[충북대학교,심리상담학과,2010,2015]=[경희대학교,가족치료학석사,2010,2015]', '[자폐돌봄협회,대리,2017-8,임상치료사]', '[놀이심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist004@gmail.com', '황경태', '010-6874-3544', '3DDD-3.png', '자기소개', 'tQ33VQz220805', '[충남대학교,심리상담학과,2009,2013]=[경북대학교,의공학연구석사,2016,2022]', '[심리치료센터,대리,2017-8,놀이치료사]', '[미술심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist005@gmail.com', '하병곤', '010-3542-1115', '3DDD-4.png', '자기소개', 'tsCvksB220804', '[경희대학교,생체의공학과,2016,2022]=[성균관대학교,아동교육학박사,2016,2022]', '[특수아동협회,대리,2017-8,지도사]', '[초등성품지도사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist006@gmail.com', '남한결', '010-7865-2116', 'Afterclap.png', '자기소개', 'tlAN5Qf220805', '[부산대학교,신체과학과,2008,2015]=[서강대학교,의과연구학석사,2017,2022]', '[국제아동인권센터,대리,2017-8,치료사]', '[인지행동심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist007@gmail.com', '백현식', '010-0207-2545', 'Afterclap-1.png', '자기소개', 'tvSV0xI220804', '[부산대학교,의공에과,2002,2007]=[서울대학교,가족치료학석사,2010,2015]', '[일상모두병원,대리,2017,미술치료사]', '[중등정교사 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist008@gmail.com', '조희아', '010-5165-2312', 'Afterclap-2.png', '자기소개', 'tvSV0xI2a0804', '[경희대학교,생체의공학과,2012,2016]=[광운대학교,아동연구석사,2012,2016]', '[서울시립어린이병원,대리,2017-8,임상치료사]', '[인지행동지도사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist009@gmail.com', '하준호', '010-1111-0000', 'Afterclap-3.png', '자기소개', 'tvSV0xI2b0804', '[경상대학교,가정치료학과,2016,2022]=[한국교원대학교,심리교육학석사,2017,2022]', '[하이스마일,대리,2017-8,놀이치료사]', '[심리상담사 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist010@gmail.com', '성우희', '010-1214-0265', 'Afterclap-5.png', '자기소개', 'tvSV0xI2c0804', '[경상대학교,심리공학과,2016,2022]=[한국교원대학교,상담교육학석사,2017,2022]', '[보건복지부,대리,2017-8,연구원]', '[청소년심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist011@gmail.com', '예수혁', '010-8520-9630', 'Afterclap-4.png', '자기소개', 'tvSV0xI2d0804', '[마산대학교,간호학과,2016,2022]=[성균관대학교,아동학과박사,2017,2022]', '[일상모두병원,대리,2017-8,연구원]', '[인형심리상담사자격증 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist012@gmail.com', '정종남', '010-7410-0258', 'Afterclap-6.png', '자기소개', 'tvSV0xI2e0804', '[마산대학교,간호학과,2016,2022]=[한양대학교,가정학치료박사,2017,2022]', '[허그아이,대리,2017-8,부원장]', '[사회복지사자격증 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist013@gmail.com', '조영욱', '010-0369-7897', 'Afterclap-7.png', '자기소개', 'tvSV0xI2f0804', '[경북대학교,사회교육과,2016,2022]=[한양대학교,아동심리치료석사,2017,2022]', '[허그아이,대리,2017-2018,상담치료사]', '[사회복지사자격증 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist014@gmail.com', '예동철', '010-9879-6546', 'Afterclap-8.png', '자기소개', 'tvSV0xI2g0804', '[명지대학교,사회교육과,2016,2022]=[한국교원대학교,아동분석학석사,2017,2022]', '[아동돌봄센터,대리,2017-8,임상연구원]', '[임상심리사 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist015@gmail.com', '예효은', '010-4564-3213', 'Afterclap-9.png', '자기소개', 'tvSV0xI2h0804', '[울산대학교,생명공학과,2016,2022]=[치의과대학교,임상심리학석사,2017,2022]', '[아동돌봄센터,대리,2017-2018,치료사]', '[보육교사 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist016@gmail.com', '설승용', '010-1231-0846', 'Cranks.png', '자기소개', 'tvSV0xI2i0804', '[한신대학교,아동보육학,2016,2022]=[치의과대학교,정신심리학석사,2017,2022]', '[부산마음클리닉,대리,2017-2018,상임연구원]', '[놀이심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist017@gmail.com', '송해영', '010-6497-1181', 'Cranks-1.png', '자기소개', 'tvSV0xI2j0804', '[남서울대학교,아동복지학과,2016,2022]=[고려대학교,아동교육박사,2017,2022]', '[부산마음클리닉,대리,2017-2018,놀이치료사]', '[미술심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist018@gmail.com', '하태훈', '010-1346-7090', 'Cranks-2.png', '자기소개', 'tvSV0xI2k0804', '[남서울대학교,아동복지학과,2016,2022]=[연세대학교,아동교육석사,2017,2022]', '[원주언어치료실,대리,2017-8,상임연구원]', '[중등정교사 2급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist019@gmail.com', '심정현', '010-8090-7777', 'Delivery boy.png', '자기소개', 'tvSV0xI2l0804', '[한신대학교,아동보육학,2016,2022]=[고려대학교,아동치료박사,2017,2022]', '[경북아이마음,대리,2017-2018,임상심리사]', '[인지행동심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist020@gmail.com', '오한결', '010-7496-9874', 'Delivery boy-1.png', '자기소개', 'tvSV0xI2n0804', '[상경대학교,아동교육심리학과,2016,2022]=[경희대학교,임상치료석사,2017,2022]', '[경북아이마음,대리,2017-8,임상치료사]', '[청소년심리상담사 1급,한국,2016,첨부파일] '),
+('서울특별시 강남구 역삼동 테헤란로 212', 'therapist999@gmail.com', '권미르', '010-7417-5555', 'Delivery boy-2.png', '자기소개', 'tWYjC7k2m0804', '[전북대학교,아동교육심리학과,2016,2022]=[경희대학교,임상치료박사,2017,2022]', '[자폐돌봄협회,대리,2017-8,연구사]', '[청소년심리상담사 2급,한국,2016,첨부파일] ');
+
+
+-- child
+insert into sss_auth.child(name, birth, gender, profile_url, child_id, parent_id, survey_flag)
+values
+('정진욱', '2015-07-23', '남자', 'Delivery boy-3.png', 'cMJwqp1220804', 'p0SAddT220804', 1),
+('정세혁', '2018-05-10', '남자', 'Delivery boy-4.png', 'cMJwqp2220804', 'p0SAddT220804', 1),
+('이영아', '2017-01-22', '여자', 'Delivery boy-5.png', 'cMJwqp3220804', 'p3IsNnN220804', 0),
+('이한결', '2013-12-24', '남자', 'E-commerce.png', 'cMJwqp4220804', 'p3IsNnN220804', 1),
+('양빛가람', '2012-08-03', '여자', 'E-commerce-1.png', 'cMJwqp5220804', 'p9wj92M220803', 0),
+('양가은', '2013-10-23', '여자', 'E-commerce-2.png', 'cMJwqp6220804', 'p9wj92M220803', 1),
+('양민수', '2018-08-28', '남자', 'Funny Bunny.png', 'cMJwqp7220804', 'p9wj92M220803', 1),
+('김우람', '2013-02-22', '남자', 'Funny Bunny-1.png', 'cMJwqp8220804', 'pcdHKGY220804', 1),
+('김단비', '2015-11-10', '남자', 'Funny Bunny-2.png', 'cMJwqp9220804', 'pcdHKGY220804', 0),
+('김라온', '2016-12-01', '남자', 'Funny Bunny-3.png', 'cMJwq10220804', 'pcdHKGY220804', 0),
+('남슬아', '2018-04-01', '여자', 'Funny Bunny-3.png', 'cMJwq11220804', 'pDj2dJd220805', 1); 
+
+
+-- question (문진표) 
+insert into question(question_context) values
+("아이가 이름을 불렀을 때 돌아보나요?"), 
+("아이와 눈을 맞추는 게 어려운가요?"),
+("아이가 혼자 놀 때, 물건을 일렬로 세우거나 정렬하는 행동을 자주 하나요?"),
+("아이가 원하는 물건을 정확하게 가리키나요?"),
+("아이가 선풍기나 세탁기와 같이 회전하는 물체에 오래 관심을 두나요?"),
+("아이가 얼마나 많은 단어를 말할 수 있나요?"),
+("아이가 인형 놀이, 장난감 전화기로 전화하기 와 같은 역할 놀이를 할 수 있나요?"),
+("아이가 코를 킁킁 거리거나 물건을 핥는 행동을 자주 하나요?"),
+("생활 방식이 바뀌거나 환경이 달라졌을 때 아이가 쉽게 적응하나요?"),
+("아이가 수도꼭지를 돌리거나 불을 껐다 켜는 등 반복적인 행동을 자주 하나요?"),
+("아이가 또래 아이들과 비교했을 때 언제 말을 시작했나요?"),
+("아이가 부모님의 말이나 소리를 그대로 따라하나요?"),
+("아이가 소음에 지나치게 민감한가요?"),
+("다른 사람이 아이의 말을 쉽게 이해하나요?"),
+("아이가 친구들과 어울리는데 어려움이 있나요?"),
+("아이가 재밌는 광경을 봤을 때 부모님께 말해주나요?"),
+("아이가 부모님이 보는 것을 따라 보나요?"),
+("아이의 목소리가 지나치게 크거나 작은가요?"),
+("부모님이나 친구가 화났을 때 아이가 위로하려고 하나요?"),
+("아이가 한 가지 주제에 얼마나 오랫동안 관심을 가지나요?"),
+("아이가 손을 흔들며 인사하는 등의 손 운동을 잘 하나요?"),
+("아이의 걸음걸이가 자연스러운가요?"),
+("아이가 무호흡 혹은 과호흡과 같은 호흡 불량 증상을 보이나요?");
+
+-- b_expertise_therapist (치료사_전문성)
+insert into sss_service.b_expertise_therapist(thera_id,expertise_no)
+values
+("tLQDOys220805",1),("tLQDOys220805",2),("tLQDOys220805",3),("tLQDOys220805",5),
+("to46qFg220805",1),("to46qFg220805",2),("to46qFg220805",5),
+("toqyD0t220805",2),
+("tQ33VQz220805",3),("tQ33VQz220805",4),("tQ33VQz220805",5),
+("tsCvksB220804",1),
+("tlAN5Qf220805",2),("tlAN5Qf220805",3),("tlAN5Qf220805",4),
+("tvSV0xI220804",1),("tvSV0xI220804",5),
+("tvSV0xI2a0804",2),("tvSV0xI2a0804",4),("tvSV0xI2a0804",5),
+("tvSV0xI2b0804",5),
+("tvSV0xI2c0804",1),("tvSV0xI2c0804",2),("tvSV0xI2c0804",3),("tvSV0xI2c0804",4),
+("tvSV0xI2d0804",1),("tvSV0xI2d0804",2),
+("tvSV0xI2e0804",1),("tvSV0xI2e0804",3),
+("tvSV0xI2f0804",2),("tvSV0xI2f0804",5),
+("tvSV0xI2g0804",3),("tvSV0xI2g0804",5),
+("tvSV0xI2h0804",3),("tvSV0xI2h0804",4),("tvSV0xI2h0804",5),
+("tvSV0xI2i0804",3),("tvSV0xI2i0804",5),
+("tvSV0xI2j0804",1),("tvSV0xI2j0804",3),("tvSV0xI2j0804",4),
+("tvSV0xI2k0804",2),("tvSV0xI2k0804",5),
+("tvSV0xI2l0804",1),("tvSV0xI2l0804",3),("tvSV0xI2l0804",4),
+("tvSV0xI2n0804",2),("tvSV0xI2n0804",3),
+("tWYjC7k2m0804",1),("tWYjC7k2m0804",2),("tWYjC7k2m0804",5);
+
+
+-- b_expertise_child(아동_전문성)
+insert into sss_service.b_expertise_child(child_id, expertise_no) 
+values
+("cMJwqp1220804", 1),
+("cMJwqp2220804", 3),
+("cMJwqp4220804", 2 ),
+("cMJwqp6220804", 4 ),
+("cMJwqp7220804", 2 ),
+("cMJwqp8220804", 1 ),
+("cMJwq11220804", 2);
+
+
+-- reservation 예약 
+insert into sss_service.reservation(child_id, parent_id, reserv_time, thera_id)
+values 
+("cMJwqp1220804", "p0SAddT220804", "20220819110000", "tLQDOys220805"),
+("cMJwqp2220804", "p0SAddT220804", "20220819170000", "tQ33VQz220805"),
+("cMJwqp4220804", "p3IsNnN220804", "20220904130000", "tvSV0xI2n0804"),
+("cMJwqp6220804", "p9wj92M220803", "20220901100000", "tvSV0xI2j0804"),
+("cMJwqp7220804", "p9wj92M220803", "20220901110000", "tvSV0xI2n0804"),
+("cMJwqp8220804", "pcdHKGY220804", "20220821160000", "to46qFg220805"),
+("cMJwq11220804", "pDj2dJd220805", "20220820090000", "tvSV0xI2c0804");
+
+
+-- answer 문진표 
+insert into sss_service.answer(created_date, answer, child_id, created_time, score1, score2, score3)
+values
+("20220818150801", "전혀 보지 않음,불가능함,항상 함,전혀 가리키지 않음,몇 시간 동안 관심을 둠,아직 말하지 못함,전혀 하지 않음,매우 자주 함,전혀 적응하지 못함,매일 많이 함,매우 늦게 시작함,매일 자주 따라함,아주 민감함,거의 이해하지 못함,거의 어울리지 못함,전혀 공유하지 않음,전혀 따라보지 않음,지나치게 크거나 작음,전혀 관심없음,몇 일,잘 하지 못함,팔자걸음이 심함,일주일에 한 번 이하로 일어남,", "cMJwqp1220804" , "20220818150801", 83, 30, 6),
+("20220818121013", "전혀 보지 않음,불가능함,자주 함,일주일에 몇 번 정도 가리킴,1-2분 정도 관심을 둠,51-100개 단어를 사용함,일주일에 한 번 정도 함,일주일에 한 번 이하로 함,꽤 어렵게 적응함,일주일에 몇 번 함,꽤 늦게 시작함,일주일에 몇 번 따라함,가끔 민감함,가끔 이해함,어울리기는 하나 대화하기 어려움,하루에 한 두 번 공유함,일주일에 몇 번 따라 봄,가끔 있음,가끔 위로하려 함,몇 시간,잘 하지 못함,팔자걸음이 심함,일주일에 몇 번 정도 일어남,", "cMJwqp2220804", "20220816121013", 49, 16, 7),
+("20220818151010", "자주 돌아봄,꽤 어려움,거의 하지 않음,하루에 몇 번 정도 가리킴,1-2분 정도 관심을 둠,10-50개 단어를 사용함,일주일에 한 번도 하지 않음,일주일에 몇 번 정도 함,아주 어렵게 적응함,하루에 몇 번 함,매우 늦게 시작함,일주일에 몇 번 따라함,꽤 민감함,거의 이해하지 못함,거의 어울리지 못함,일주일에 한 두 번 공유함,일주일에 몇 번 따라 봄,종종 있음,대부분 관심없음,몇 시간,잘 하지 못함,팔자걸음이 심함,일주일에 몇 번 정도 일어남,", "cMJwqp4220804", "20220818151010", 53, 22, 7),
+("20220818151001", "가끔 돌아봄,많이 어려움,자주 함,일주일에 몇 번 정도 가리킴,10분 정도 관심을 둠,아직 말하지 못함,일주일에 한 번도 하지 않음,일주일에 몇 번 정도 함,꽤 어렵게 적응함,일주일에 몇 번 함,꽤 늦게 시작함,일주일에 몇 번 따라함,가끔 민감함,가끔 이해함,친구들과 전혀 어울리지 못함,하루에 한 두 번 공유함,전혀 따라보지 않음,거의 없음,가끔 위로하려 함,몇 시간,잘 하지 못함,다리가 굽혀지지 않고 뻣뻣함,하루에 몇 번 정도 일어남,", "cMJwqp6220804", "20220818151001", 58, 19, 10), 
+("20220818150803", "자주 돌아봄,꽤 어려움,거의 하지 않음,하루에 몇 번 정도 가리킴,1-2분 정도 관심을 둠,10-50개 단어를 사용함,일주일에 한 번도 하지 않음,일주일에 몇 번 정도 함,아주 어렵게 적응함,하루에 몇 번 함,매우 늦게 시작함,일주일에 몇 번 따라함,꽤 민감함,거의 이해하지 못함,거의 어울리지 못함,일주일에 한 두 번 공유함,일주일에 몇 번 따라 봄,종종 있음,대부분 관심없음,몇 시간,잘 하지 못함,팔자걸음이 심함,일주일에 몇 번 정도 일어남,", "cMJwqp7220804", "20220818150803", 53, 22, 7),
+("20220818130801", "전혀 보지 않음,불가능함,항상 함,전혀 가리키지 않음,몇 시간 동안 관심을 둠,아직 말하지 못함,전혀 하지 않음,매우 자주 함,전혀 적응하지 못함,매일 많이 함,매우 늦게 시작함,매일 자주 따라함,아주 민감함,거의 이해하지 못함,거의 어울리지 못함,전혀 공유하지 않음,전혀 따라보지 않음,지나치게 크거나 작음,전혀 관심없음,몇 일,잘 하지 못함,팔자걸음이 심함,일주일에 한 번 이하로 일어남,", "cMJwqp8220804" , "20220818130801", 83, 30, 6),
+("20220818151310", "자주 돌아봄,꽤 어려움,거의 하지 않음,하루에 몇 번 정도 가리킴,1-2분 정도 관심을 둠,10-50개 단어를 사용함,일주일에 한 번도 하지 않음,일주일에 몇 번 정도 함,아주 어렵게 적응함,하루에 몇 번 함,매우 늦게 시작함,일주일에 몇 번 따라함,꽤 민감함,거의 이해하지 못함,거의 어울리지 못함,일주일에 한 두 번 공유함,일주일에 몇 번 따라 봄,종종 있음,대부분 관심없음,몇 시간,잘 하지 못함,팔자걸음이 심함,일주일에 몇 번 정도 일어남,", "cMJwq11220804", "20220818151310", 53, 22, 7);
+
+
+-- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
