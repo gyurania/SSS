@@ -150,4 +150,9 @@ export default {
 button {
   border: 1px solid #dcdcdc;
 }
+@media (min-height: 938px) {
+  .section {
+    height: 100vh;
+  }
+}
 </style>
