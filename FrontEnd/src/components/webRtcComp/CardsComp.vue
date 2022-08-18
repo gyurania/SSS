@@ -237,16 +237,11 @@ export default {
           };
 
           console.log(dataSend);
-<<<<<<< HEAD
-          
-          axios.post('https://i7a606.q.ssafy.io/service-api/play/result', dataSend)
-=======
 
           axios.post(
             "https://i7a606.q.ssafy.io/service-api/play/result",
             dataSend
           );
->>>>>>> a2d4e801d7a0d3b3b23baca5624c15bf33621390
 
           this.gameSet = false;
           this.gameCountPerGame = 0;
