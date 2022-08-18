@@ -60,13 +60,16 @@ public class RedisService {
 		public void setCards() {
 			List<ObjectCard> cards = obj.findAll();
 			HashOperations<String, Integer, String> hashOperations = redisTemplate.opsForHash();
+			Map<Integer,String> map = new HashMap<Integer, String>();
 //			ListOperations<String, String> stringOperations = redisTemplate.opsForList();
 			
 			for(int i=0; i<cards.size(); i++) {
 				String cardobj = cards.get(i).getImage()
 						+","+cards.get(i).getName()+","+cards.get(i).getQuestion();
-				hashOperations.put("cards", cards.get(i).getCardId(), cardobj);
+//				hashOperations.put("cards", cards.get(i).getCardId(), cardobj);
+				map.put(cards.get(i).getCardId(), cardobj);
 //				hashOper.rightPush("cards", cardobj);
+				hashOperations.putAll("cards", map);
 			}
 			
 		}
@@ -86,6 +89,7 @@ public class RedisService {
 //		return objs;
 //	}
 //	
+	
 	public String getCards(int cardNo){
 		HashOperations<String, Integer, String> hashOperations= redisTemplate.opsForHash();
 //		Long size=  hashOperations.size("cards");
