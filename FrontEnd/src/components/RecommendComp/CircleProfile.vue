@@ -75,9 +75,18 @@
           >닫기
         </base-button>
 
-        <base-button type="primary" @click="moveReservePage()">
-          예약하기
-        </base-button>
+        <div v-if="isLoggedIn">
+          <base-button type="primary" @click="moveReservePage()">
+            예약하기
+          </base-button>
+        </div>
+        <div v-else>
+          <router-link to="/login">
+            <base-button type="primary">
+              예약하기
+            </base-button>
+          </router-link>
+        </div>
       </template>
     </modal>
   </div>
@@ -85,6 +94,7 @@
 
 <script>
 import Modal from "@/components/Modal.vue";
+import { mapGetters } from "vuex"
 // import CounselorInfo from "./AboutCounselorModal.vue";
 
 export default {
@@ -101,16 +111,27 @@ export default {
       childInfo: this.$route.params,
     };
   },
+  computed: {
+    ...mapGetters(["isLoggedIn"])
+  },
   props: ["counselor"],
   methods: {
     moveReservePage() {
-      this.$router.push({
-        name: "reserve",
-        params: {
-          childInfo: this.childInfo,
-          counselorInfo: this.counselor,
-        },
-      });
+      console.log(this.$route.params.childId)
+      if (this.$route.params.childId) {
+        this.$router.push({
+          name: "reserve",
+          params: {
+            childInfo: this.childInfo,
+            counselorInfo: this.counselor,
+          },
+        });
+      } else {
+        alert("자려관리 페이지에서 상담사 추천 버튼을 눌러주세요.")
+        this.$router.push({
+          name: "children"
+        });
+      }
     },
   },
 };
