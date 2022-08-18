@@ -58,9 +58,11 @@
             >
               <h2 class="display-2">
                 <div class="text-center mb-5">
+
                   <h2>{{this.childData.childName}} 님의 결과</h2>
                 <h2>점수 : {{this.gameData.score}}</h2>
                 <h2>걸린 시간 : {{this.gameData.totalTime}}</h2>
+
                 </div>
               </h2>
               <div class="row justify-content-center">
@@ -191,31 +193,60 @@ export default {
         this.dialog1 = "false";
 
         if (this.gameCount === 5) {
-          let totalTimeMilSec = this.timeSequence.reduce((a,b) => a + b, 0)
+          let totalTimeMilSec = this.timeSequence.reduce((a, b) => a + b, 0);
 
-          let hour = parseInt(totalTimeMilSec / 3600000)
+          let hour = parseInt(totalTimeMilSec / 3600000);
 
-          let min = parseInt((totalTimeMilSec % 3600000) / 60000)
+          let min = parseInt((totalTimeMilSec % 3600000) / 60000);
 
-          let sec = parseInt((totalTimeMilSec % 60000) / 1000)
-          
-          this.totalTime = `${hour.toString().padStart(2, 0)}:${min.toString().padStart(2, 0)}:${sec.toString().padStart(2, 0)}`
+          let sec = parseInt((totalTimeMilSec % 60000) / 1000);
+
+          this.totalTime = `${hour
+            .toString()
+            .padStart(2, 0)}:${min
+            .toString()
+            .padStart(2, 0)}:${sec.toString().padStart(2, 0)}`;
 
           console.log(this.totalTime);
           console.log(this.successCount);
-          let now = new Date()
-          this.gameData.score = this.successCount
-          this.gameData.totalTime = this.totalTime
+          let now = new Date();
+          this.gameData.score = this.successCount;
+          this.gameData.totalTime = this.totalTime;
           let dataSend = {
             score: this.successCount,
             totalTime: this.totalTime,
-            childId: this.childData['childId'],
-            createTime: `${now.getFullYear().toString().padStart(2, 0)}-${(now.getMonth() + 1).toString().padStart(2, 0)}-${now.getDate().toString().padStart(2, 0)}T${now.getHours().toString().padStart(2, 0)}:${now.getMinutes().toString().padStart(2, 0)}:${now.getSeconds().toString().padStart(2, 0)}`
-          }
-          
+            childId: this.childData["childId"],
+            createTime: `${now
+              .getFullYear()
+              .toString()
+              .padStart(2, 0)}-${(now.getMonth() + 1)
+              .toString()
+              .padStart(2, 0)}-${now
+              .getDate()
+              .toString()
+              .padStart(2, 0)}T${now
+              .getHours()
+              .toString()
+              .padStart(2, 0)}:${now
+              .getMinutes()
+              .toString()
+              .padStart(2, 0)}:${now
+              .getSeconds()
+              .toString()
+              .padStart(2, 0)}`,
+          };
+
           console.log(dataSend);
+<<<<<<< HEAD
           
           axios.post('https://i7a606.q.ssafy.io/service-api/play/result', dataSend)
+=======
+
+          axios.post(
+            "https://i7a606.q.ssafy.io/service-api/play/result",
+            dataSend
+          );
+>>>>>>> a2d4e801d7a0d3b3b23baca5624c15bf33621390
 
           this.gameSet = false;
           this.gameCountPerGame = 0;
@@ -262,7 +293,6 @@ export default {
 .card-profile {
   padding: 5%;
   height: 80vh;
-  cursor: pointer;
 }
 #cardsDiv {
   margin-top: 5%;
@@ -299,6 +329,7 @@ export default {
 }
 /* 개개인 카드 사이즈 */
 #cardImg {
+  cursor: pointer;
   height: 17rem;
   border-radius: 15px;
 }
@@ -316,7 +347,7 @@ export default {
   z-index: 999;
   position: absolute;
   transform: translate(-50%, -50%);
-  background-color: rgba(117, 0, 0, 0.251);
+  background-color: rgba(26, 26, 26, 0.598);
 }
 .card_msg > p {
   text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;
@@ -325,6 +356,7 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   font-size: 5rem;
+  font-weight: bolder;
 }
 /* 뒷배경인데 건들지 마셈 */
 .section-profile-cover {
