@@ -146,6 +146,8 @@ export default {
         score: null,
       },
 
+      totalTimeMilsecSend: null,
+
       gameStageNum: 5,
 
       childData: this.$route.params,
@@ -202,7 +204,8 @@ export default {
         this.dialog1 = "false";
 
         if (this.gameCount === this.gameStageNum) {
-          let totalTimeMilSec = this.timeSequence.reduce((a, b) => a + b, 0);
+
+          let totalTimeMilSec = this.timeSequence.reduce((a, b) => a + b, 0)
 
           let hour = parseInt(totalTimeMilSec / 3600000);
 
@@ -216,14 +219,27 @@ export default {
             .toString()
             .padStart(2, 0)}:${sec.toString().padStart(2, 0)}`;
 
+          let totalTimeMilsecSend = this.totalTimeMilSec / this.gameStageNum * 2;
+
+          let hourSend = parseInt(totalTimeMilsecSend / 3600000);
+
+          let minSend = parseInt((totalTimeMilsecSend % 3600000) / 60000);
+
+          let secSend = parseInt((totalTimeMilsecSend % 60000) / 1000);
+
+          this.totalTimeSend = `${hourSend
+            .toString()
+            .padStart(2, 0)}:${minSend
+            .toString()
+            .padStart(2, 0)}:${secSend.toString().padStart(2, 0)}`;
+
           console.log(this.totalTime);
           console.log(this.successCount);
           let now = new Date();
           this.gameData.score = this.successCount / this.gameStageNum * 10;
-          this.gameData.totalTime = this.totalTime / this.gameStageNum * 2;
           let dataSend = {
             score: this.successCount,
-            totalTime: this.totalTime,
+            totalTime: this.totalTimeSend,
             childId: this.childData["childId"],
             createTime: `${now
               .getFullYear()
