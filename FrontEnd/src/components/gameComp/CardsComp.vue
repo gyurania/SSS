@@ -213,13 +213,13 @@ export default {
 
           let sec = parseInt((totalTimeMilSec % 60000) / 1000);
 
-          this.totalTime = `${hour
+          this.gameData.totalTime = `${hour
             .toString()
             .padStart(2, 0)}:${min
             .toString()
             .padStart(2, 0)}:${sec.toString().padStart(2, 0)}`;
 
-          let totalTimeMilsecSend = this.totalTimeMilSec / this.gameStageNum * 2;
+          let totalTimeMilsecSend = totalTimeMilSec / this.gameStageNum * 2;
 
           let hourSend = parseInt(totalTimeMilsecSend / 3600000);
 
@@ -233,12 +233,13 @@ export default {
             .toString()
             .padStart(2, 0)}:${secSend.toString().padStart(2, 0)}`;
 
-          console.log(this.totalTime);
-          console.log(this.successCount);
+          console.log(this.gameData.totalTime);
           let now = new Date();
           this.gameData.score = this.successCount / this.gameStageNum * 10;
+          console.log(this.gameData.score);
+
           let dataSend = {
-            score: this.successCount,
+            score: this.gameData.score,
             totalTime: this.totalTimeSend,
             childId: this.childData["childId"],
             createTime: `${now
