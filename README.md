@@ -2,14 +2,10 @@
 
 ## ☀️ 봄날의 햇살
 
----
-
 > WebRTC 기반 자폐 아동 상담 플랫폼 <br>
 > 김규란 이준경 최지혜 배한빈 성지훈 이봄
 
 ## 📌 목차
-
----
 
 - [프로젝트 소개](#📁-프로젝트-소개)
   - [프로젝트 목표](#✒️-프로젝트-목표)
@@ -17,16 +13,14 @@
   - [기술스택](#⚙️-기술스택)
   - [구현 기능](#🔎-구현-기능)
 - [산출물](#📄-산출물)
-  - [ERD Diagram]
-  - [기능 명세서]
-  - [API 명세서]
-  - [유저스토리]
-  - [서버 아키텍처]
-- [주요 화면]
+  - [ERD Diagram](#🔗-erd-diagram)
+  - [기능 명세서](#🔗-기능-명세서)
+  - [API 명세서](#🔗-api-명세서)
+  - [유저스토리](#🔗-유저스토리)
+  - [서버 아키텍처](#🔗-서버-아키텍처)
+- [주요 화면](#💻-주요-화면)
 
 ## 📁 프로젝트 소개
-
----
 
 ### ✒️ 프로젝트 목표
 
@@ -40,22 +34,13 @@
 
 ### ⚙️ 기술스택
 
-<img src="https://img.shields.io/badge/Java-20336B?style=for-the-badge&logo=&logoColor=white">
-<img src="https://img.shields.io/badge/JPA-212121?style=for-the-badge&logo=&logoColor=white">
-<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+<img src="https://img.shields.io/badge/Java-20336B?style=for-the-badge&logo=&logoColor=white"> <img src="https://img.shields.io/badge/JPA-212121?style=for-the-badge&logo=&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
 
-<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white">
-<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white">
+<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white"> <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white">
 
-<img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=Jenkins&logoColor=white">
-<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
-<img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white">
-<img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=Redis&logoColor=white">
+<img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=Jenkins&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"> <img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white"> <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=Redis&logoColor=white">
 
-<img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white">
-<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
-<img src="https://img.shields.io/badge/GitLab-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white">
+<img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/GitLab-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white">
 
 ### 🔎 구현 기능
 
@@ -82,8 +67,6 @@
 
 ## 📄 산출물
 
----
-
 ### 🔗 ERD Diagram
 
 ### 🔗 기능 명세서
@@ -104,8 +87,6 @@
 ![사용자흐름도](./img/%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%9D%90%EB%A6%84%EB%8F%84.PNG)
 
 ## 💻 주요 화면
-
----
 
 - 메인화면  
   ![main](./img/main.gif)
