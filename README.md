@@ -93,8 +93,8 @@
 - 보호자 회원가입  
   ![parent](./img/parent.gif)
 - 상담사 회원가입  
-  ![thera](./img/thera.gif)
-
+   ![thera](./img/thera.gif)
+  <br><br>
 - 보호자 - 아동 관리  
   ![child](./img/child.gif)
 - 보호자 - 아동 문진표 작성  
@@ -106,13 +106,13 @@
 - 보호자 - 혼자놀기  
   ![play](./img/play.gif)
 - 보호자 - 놀이기록 조회  
-  ![chart](./img/chart.gif)
-
+   ![chart](./img/chart.gif)
+  <br><br>
 - 상담사 - 예약관리 및 아동정보 조회  
   ![manageReserv](./img/manageReserv.gif)
 - 상담사 - 상담일지 작성  
-  ![record](./img/manageResrecorderv.gif)
-
+   ![record](./img/manageResrecorderv.gif)
+  <br><br>
 - 화상 상담  
   ![consult](./img/consult.png)
 - 상담 중 화면 공유  
