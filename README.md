@@ -90,15 +90,30 @@
 
 - 메인화면  
   ![main](./img/main.gif)
-- 보호자 회원가입
+- 보호자 회원가입  
   ![parent](./img/parent.gif)
-- 상담사 회원가입
+- 상담사 회원가입  
+  ![thera](./img/thera.gif)
 
-- 보호자 - 아동 관리
+- 보호자 - 아동 관리  
   ![child](./img/child.gif)
-- 보호자 - 아동 문진표 작성
+- 보호자 - 아동 문진표 작성  
   ![survey](./img/survey.gif)
-- 보호자 - 상담사 추천
+- 보호자 - 상담사 추천  
   ![recommend](./img/recommend.gif)
-- 보호자 - 상담 예약
+- 보호자 - 상담 예약  
   ![reserve](./img/reserve.gif)
+- 보호자 - 혼자놀기  
+  ![play](./img/play.gif)
+- 보호자 - 놀이기록 조회  
+  ![chart](./img/chart.gif)
+
+- 상담사 - 예약관리 및 아동정보 조회  
+  ![manageReserv](./img/manageReserv.gif)
+- 상담사 - 상담일지 작성  
+  ![record](./img/manageResrecorderv.gif)
+
+- 화상 상담  
+  ![consult](./img/consult.png)
+- 상담 중 화면 공유  
+  ![playing](./img/playing.png)
